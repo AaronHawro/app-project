@@ -4,6 +4,12 @@ import { AppService } from './app.service';
 
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './tables/user/user.module';
+import { TeamModule } from './tables/team/team.module';
+import { TaskModule } from './tables/task/task.module';
+import { ProjectModule } from './tables/project/project.module';
+import { CommentModule } from './tables/comment/comment.module';
+
 
 dotenv.config();
 
@@ -17,8 +23,13 @@ dotenv.config();
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true, // !!ONLY FOR TIME OF DEVELOPMENT!!
-    })
+      synchronize: true, // !!ONLY TRUE FOR TIME OF DEVELOPMENT!!
+    }),
+    UserModule,
+    TeamModule,
+    TaskModule,
+    ProjectModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
