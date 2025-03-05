@@ -25,6 +25,7 @@ dotenv.config();
       autoLoadEntities: true,
       synchronize: true, // !!ONLY TRUE FOR TIME OF DEVELOPMENT!!
     }),
+    
     UserModule,
     TeamModule,
     TaskModule,

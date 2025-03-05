@@ -11,11 +11,19 @@ export class UserService {
   ) {}
 
   async findAll(): Promise<User[]> {
-    return this.usersRepository.find({ relations: ['tasks'] });
+    return this.usersRepository.find();
+  }
+
+  async findOne(id: number): Promise<User> {
+    return this.usersRepository.findOneBy({id});
   }
 
   async create(user: Partial<User>): Promise<User> {
     const newUser = this.usersRepository.create(user);
     return this.usersRepository.save(newUser);
+  }
+
+  async deleteById(id: number): Promise<void> {
+    await this.usersRepository.delete(id);
   }
 }
