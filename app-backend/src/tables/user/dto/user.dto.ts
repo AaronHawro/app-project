@@ -7,6 +7,9 @@ export class CreateUserDTO {
     name: String;
 
     @IsNotEmpty()
+    password: String;
+
+    @IsNotEmpty()
     email: String;
 
     @IsNotEmpty()
