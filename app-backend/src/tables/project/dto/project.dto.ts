@@ -1,11 +1,11 @@
-import { IsNotEmpty } from "class-validator"
+import { IsDate, IsString } from "class-validator"
 
 export class CreateProjectDTO {
     _id?: number;
 
-    @IsNotEmpty()
+    @IsString()
     name: String;
     
-    @IsNotEmpty()
+    @IsDate()
     deadline: Date;
 }
