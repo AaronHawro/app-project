@@ -17,12 +17,12 @@ export class CommentController {
         return this.commentService.findOne(params.id);
     }
 
-    @Post()
-    createComment(@Body() body: CreateUserDTO): Promise<Comment> {
-        return this.commentService.create(body); // cant find cause
-    }
+    // @Post()
+    // createComment(@Body() body: CreateUserDTO): Promise<Comment> {
+        // return this.commentService.create(body);  //unresolved error: Type 'CreateUserDTO' has no properties in common with type 'Partial<Comment>'
+    // }
 
-    @Delete()
+    @Delete('/:id')
     deleteComment(@Param() params: {id: number}): Promise<void> {
         return this.commentService.deleteById(params.id);
     }

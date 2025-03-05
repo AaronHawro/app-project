@@ -22,7 +22,7 @@ export class UserController {
         return this.userService.create(body);
     }
 
-    @Delete()
+    @Delete('/:id')
     deleteUser(@Param() params: {id: number}): Promise<void> {
         return this.userService.deleteById(params.id);
     }

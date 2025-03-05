@@ -22,7 +22,7 @@ export class TeamController {
             return this.teamService.create(body);
         }
     
-        @Delete()
+        @Delete('/:id')
         deleteTeam(@Param() params: {id: number}): Promise<void> {
             return this.teamService.deleteById(params.id);
         }

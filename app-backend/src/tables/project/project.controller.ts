@@ -22,7 +22,7 @@ export class ProjectController {
             return this.projectService.create(body);
         }
     
-        @Delete()
+        @Delete('/:id')
         deleteProject(@Param() params: {id: number}): Promise<void> {
             return this.projectService.deleteById(params.id);
         }
