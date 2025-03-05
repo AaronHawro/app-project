@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { Comment } from './comment.entity';
-import { CreateUserDTO } from '../user/dto/user.dto';
+import { CreateCommentDTO } from './dto/comment.dto';
 
 @Controller('comment')
 export class CommentController {
@@ -17,10 +17,10 @@ export class CommentController {
         return this.commentService.findOne(params.id);
     }
 
-    // @Post()
-    // createComment(@Body() body: CreateUserDTO): Promise<Comment> {
-        // return this.commentService.create(body);  //unresolved error: Type 'CreateUserDTO' has no properties in common with type 'Partial<Comment>'
-    // }
+    @Post()
+    createComment(@Body() body: CreateCommentDTO): Promise<Comment> {
+        return this.commentService.create(body);
+    }
 
     @Delete('/:id')
     deleteComment(@Param() params: {id: number}): Promise<void> {

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Team } from './team.entity';
 import { Repository } from 'typeorm';
+import { CreateTeamDTO } from './dto/team.dto';
 
 @Injectable()
 export class TeamService {
@@ -18,8 +19,8 @@ export class TeamService {
         return this.TeamsRepository.findOneBy({id});
       }
     
-      async create(team: Partial<Team>): Promise<Team> {
-        const newTeam = this.TeamsRepository.create(team);
+      async create(data: CreateTeamDTO): Promise<Team> {
+        const newTeam = this.TeamsRepository.create(data);
         return this.TeamsRepository.save(newTeam);
       }
     
