@@ -8,6 +8,8 @@ async function bootstrap() {
     console.log(`${req.method} ${req.url}`); // http request logging for debuging
     next();
   })
+
+  app.enableCors();
   await app.listen(process.env.PORT ?? 3000, '0.0.0.0'); // 0.0.0.0 allows nest to accept connections from any ip address instead of only localhost
   }
 bootstrap();
