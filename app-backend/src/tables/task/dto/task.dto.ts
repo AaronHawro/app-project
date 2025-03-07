@@ -4,6 +4,9 @@ export class CreateTaskDTO {
     _id?: number;
 
     @IsString()
+    overview: String;
+
+    @IsString()
     description: String;
 
     @IsString()

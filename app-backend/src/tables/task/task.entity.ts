@@ -9,6 +9,9 @@ export class Task {
     id: number;
 
     @Column()
+    overview: String;
+
+    @Column()
     description: String;
 
     @Column()
