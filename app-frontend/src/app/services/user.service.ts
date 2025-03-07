@@ -14,8 +14,12 @@ export class UserService {
     return this.http.get(`${this.apiUrl}/user`);
   }
 
-  getUser(id: number) {
+  getUserById(id: number) {
     return this.http.get(`${this.apiUrl}/user/${id}`);
+  }
+
+  getUserByName(name: String) {
+    return this.http.get(`${this.apiUrl}/user/${name}`)
   }
 
   createUser(data: any) {
