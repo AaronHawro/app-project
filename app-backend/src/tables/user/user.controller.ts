@@ -13,8 +13,13 @@ export class UserController {
     }
 
     @Get('/:id')
-    getUser(@Param() params: {id: number}): Promise<User> {
-        return this.userService.findOne(params.id);
+    getUserById(@Param() params: {id: number}): Promise<User> {
+        return this.userService.findById(params.id);
+    }
+
+    @Get('/:name')
+    getUserByName(@Param('name') name: string): Promise<User | null> {
+        return this.userService.findByName(name);
     }
 
     @Post()
