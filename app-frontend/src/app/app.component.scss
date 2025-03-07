@@ -431,9 +431,57 @@ top: 73px;
  justify-content: flex-start;
 }
 
+/* -------------------- media query for small screens ------------------- */
+@media only screen and (max-width: 600px) {
+  
+  .navbar-center ul li a span {
+    display: none;
+  }
+  .navbar-center ul li a {
+    padding-right: 0;
+    margin: 5px;
+  }
+  .nav-profile-img {
+    width: 30px;
+  }
+  .container {
+    padding: 15px 3%;
+  }
+
+  .right-sidebar {
+    flex-basis: 100%;
+    position: relative;
+    top: unset;
+  }
+  .profile-container {
+    font-size: 14px;
+    
+  }
+  .profile-pic {
+    width: 100px;
+    margin-top: -50px;
+  }
+  .profile-description {
+    font-size: 14px;
+  }
+   .main-content {
+    flex-basis: 100%;
+   }
+   .first-sidebar {
+    flex-basis: 100%;
+    position: relative;
+    top: unset;
+   }
+  .main, .first-sidebar {
+    flex-basis: 100%;
+  }
+  
+}
+
+
 
 /* nigga what */
-
+/*
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 * {
     margin: 0;
@@ -602,3 +650,4 @@ footer > * {
 footer > *:hover {
     color: #FF0000;
 }
+    */
