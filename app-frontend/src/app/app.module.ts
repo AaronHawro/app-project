@@ -28,12 +28,13 @@ import { AppRoutingModule } from './app-routing.module';
     TeamViewComponent,
     TeamEditComponent,
     UserViewComponent,
-    UserEditComponent
+    UserEditComponent,
+    AppComponent // działa normalnie
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([]),
+    RouterModule,
     MatIconModule
   ],
   providers: [
