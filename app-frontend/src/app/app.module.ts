@@ -38,6 +38,6 @@ import { AppComponent } from './app.component';
     provideClientHydration(withEventReplay()),
     provideHttpClient()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
