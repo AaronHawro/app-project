@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { strict } from 'assert';
 
 @Component({
   selector: 'app-login-page',
@@ -16,8 +17,12 @@ export class LoginPageComponent {
     
   }
   
+  usernameInput: string = '';
   tryLogIn() {
-    let username = document.getElementById('username');
-    console.log(this.userService.getUserByName(username?.textContent!));
+    console.log(this.usernameInput);
+
+    this.userService.getUserByUsername(this.usernameInput).subscribe(user => {
+      console.log(user);
+    })
   }
 }

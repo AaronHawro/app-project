@@ -7,6 +7,9 @@ export class CreateUserDTO {
     name: String;
 
     @IsString()
+    username: String;
+
+    @IsString()
     password: String;
 
     @IsEmail()

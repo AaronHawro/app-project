@@ -16,11 +16,11 @@ export class UserService {
   }
 
   async findById(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({id});
+    return this.usersRepository.findOneBy({ id });
   }
 
-  async findByName(name: String): Promise<User | null> {
-    return this.usersRepository.findOneBy({name});
+  async findByUsername(username: string): Promise<User | null> {
+    return this.usersRepository.findOneBy({ username });
   }
 
   async create(data: CreateUserDTO): Promise<User> {

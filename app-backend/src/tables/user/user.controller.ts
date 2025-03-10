@@ -12,14 +12,14 @@ export class UserController {
         return this.userService.findAll();
     }
 
-    @Get('/:id')
+    @Get('/id/:id')
     getUserById(@Param() params: {id: number}): Promise<User> {
         return this.userService.findById(params.id);
     }
 
-    @Get('/:name')
-    getUserByName(@Param('name') name: string): Promise<User | null> {
-        return this.userService.findByName(name);
+    @Get('/username/:username')
+    getUserByName(@Param() params: {username: string}): Promise<User | null> {
+        return this.userService.findByUsername(params.username);
     }
 
     @Post()
@@ -28,7 +28,7 @@ export class UserController {
         return this.userService.create(body);
     }
 
-    @Delete('/:id')
+    @Delete('/id/:id')
     deleteUser(@Param() params: {id: number}): Promise<void> {
         return this.userService.deleteById(params.id);
     }
