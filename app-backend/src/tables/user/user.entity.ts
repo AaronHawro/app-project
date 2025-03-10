@@ -12,6 +12,9 @@ export class User {
     name: String;
 
     @Column()
+    username: String;
+
+    @Column()
     password: String;
 
     @Column()
