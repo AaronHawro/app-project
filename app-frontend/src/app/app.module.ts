@@ -14,12 +14,13 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { TaskEditComponent } from './task/task-edit/task-edit.component';
 import { TaskViewComponent } from './task/task-view/task-view.component';
 import { ProjectViewComponent } from './project/project-view/project-view.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
-    ProjectViewComponent,
     ProjectEditComponent,
+    ProjectViewComponent,
     TeamViewComponent,
     TeamEditComponent,
     UserViewComponent,
