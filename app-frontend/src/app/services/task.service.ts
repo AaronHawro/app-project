@@ -15,7 +15,7 @@ export class TaskService {
   }
 
   getTask(id: number) {
-    return this.http.get(`${this.apiUrl}/task/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/task/${id}`);
   }
 
   createTask(data: any) {

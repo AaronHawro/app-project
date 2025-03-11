@@ -15,7 +15,7 @@ export class CommentService {
   }
 
   getComment(id: number) {
-    return this.http.get(`${this.apiUrl}/comment/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/comment/${id}`);
   }
 
   createComment(data: any) {
