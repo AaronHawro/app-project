@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { strict } from 'assert';
 
 @Component({
   selector: 'app-login-page',
@@ -17,12 +16,17 @@ export class LoginPageComponent {
     
   }
   
-  usernameInput: string = '';
+  usernameInput: string = ''; // basically linked with [(ngModule)] and recieves data from the html element its linked with
+  passwordInput: string = '';
   tryLogIn() {
-    console.log(this.usernameInput);
-
     this.userService.getUserByUsername(this.usernameInput).subscribe(user => {
-      console.log(user);
+      if(user == null) {
+        console.log("user not found");
+      }else if(this.passwordInput != user.password) {
+        console.log("incorrect password");
+      }else {
+        console.log("logged in as: ", user);
+      }
     })
   }
 }
