@@ -28,6 +28,11 @@ export class UserService {
     return this.usersRepository.save(newUser);
   }
 
+  async update(id: number, data: CreateUserDTO): Promise<User> {
+    this.usersRepository.update(id, data);
+    return this.usersRepository.findOneBy({id});
+  }
+
   async deleteById(id: number): Promise<void> {
     await this.usersRepository.delete(id);
   }

@@ -8,23 +8,28 @@ import { CreateTeamDTO } from './dto/team.dto';
 export class TeamService {
       constructor(
         @InjectRepository(Team)
-        private TeamsRepository: Repository<Team>,
+        private teamsRepository: Repository<Team>,
       ) {}
     
       async findAll(): Promise<Team[]> {
-        return this.TeamsRepository.find();
+        return this.teamsRepository.find();
       }
     
       async findOne(id: number): Promise<Team> {
-        return this.TeamsRepository.findOneBy({id});
+        return this.teamsRepository.findOneBy({id});
       }
     
       async create(data: CreateTeamDTO): Promise<Team> {
-        const newTeam = this.TeamsRepository.create(data);
-        return this.TeamsRepository.save(newTeam);
+        const newTeam = this.teamsRepository.create(data);
+        return this.teamsRepository.save(newTeam);
+      }
+
+      async update(id: number, data: CreateTeamDTO): Promise<Team> {
+        this.teamsRepository.update(id, data);
+        return this.teamsRepository.findOneBy({id});
       }
     
       async deleteById(id: number): Promise<void> {
-        await this.TeamsRepository.delete(id);
+        await this.teamsRepository.delete(id);
       }
 }

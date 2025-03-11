@@ -8,23 +8,28 @@ import { CreateProjectDTO } from './dto/project.dto';
 export class ProjectService {
       constructor(
         @InjectRepository(Project)
-        private ProjectsRepository: Repository<Project>,
+        private projectsRepository: Repository<Project>,
       ) {}
     
       async findAll(): Promise<Project[]> {
-        return this.ProjectsRepository.find();
+        return this.projectsRepository.find();
       }
     
       async findOne(id: number): Promise<Project> {
-        return this.ProjectsRepository.findOneBy({id});
+        return this.projectsRepository.findOneBy({id});
       }
     
       async create(data: CreateProjectDTO): Promise<Project> {
-        const newProject = this.ProjectsRepository.create(data);
-        return this.ProjectsRepository.save(newProject);
+        const newProject = this.projectsRepository.create(data);
+        return this.projectsRepository.save(newProject);
+      }
+
+      async update(id: number, data: CreateProjectDTO): Promise<Project> {
+        this.projectsRepository.update(id, data);
+        return this.projectsRepository.findOneBy({id});
       }
     
       async deleteById(id: number): Promise<void> {
-        await this.ProjectsRepository.delete(id);
+        await this.projectsRepository.delete(id);
       }
 }

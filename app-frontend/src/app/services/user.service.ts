@@ -19,14 +19,18 @@ export class UserService {
   }
 
   getUserByUsername(username: String) {
-    return this.http.get<any>(`${this.apiUrl}/user/username/${username}`)
+    return this.http.get<any>(`${this.apiUrl}/user/username/${username}`);
   }
 
   createUser(data: any) {
     return this.http.post(`${this.apiUrl}/user`, data);
   }
 
+  updateUser(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/user/id/${id}`, data);
+  }
+
   deleteUser(id: number) {
-    return this.http.delete(`${this.apiUrl}/user/${id}`);
+    return this.http.delete(`${this.apiUrl}/user/id/${id}`);
   }
 }
