@@ -15,14 +15,18 @@ export class ProjectService {
   }
 
   getProject(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/project/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/project/id/${id}`);
   }
 
   createProject(data: any) {
     return this.http.post(`${this.apiUrl}/project`, data);
   }
 
+  updateProject(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/project/id/${id}`, data);
+  }
+
   deleteProject(id: number) {
-    return this.http.delete(`${this.apiUrl}/project/${id}`);
+    return this.http.delete(`${this.apiUrl}/project/id/${id}`);
   }
 }

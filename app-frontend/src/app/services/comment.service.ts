@@ -15,14 +15,18 @@ export class CommentService {
   }
 
   getComment(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/comment/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/comment/id/${id}`);
   }
 
   createComment(data: any) {
     return this.http.post(`${this.apiUrl}/comment`, data);
   }
 
+  updateComment(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/comment/id/${id}`, data);
+  }
+
   deleteComment(id: number) {
-    return this.http.delete(`${this.apiUrl}/comment/${id}`);
+    return this.http.delete(`${this.apiUrl}/comment/id/${id}`);
   }
 }

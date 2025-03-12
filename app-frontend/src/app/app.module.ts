@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch())
   ],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

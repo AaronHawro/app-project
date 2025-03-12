@@ -15,14 +15,18 @@ export class TeamService {
   }
 
   getTeam(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/team/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/team/id/${id}`);
   }
 
   createTeam(data: any) {
     return this.http.post(`${this.apiUrl}/team`, data);
   }
 
+  updateTeam(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/team/id/${id}`, data);
+  }
+
   deleteTeam(id: number) {
-    return this.http.delete(`${this.apiUrl}/team/${id}`);
+    return this.http.delete(`${this.apiUrl}/team/id/${id}`);
   }
 }

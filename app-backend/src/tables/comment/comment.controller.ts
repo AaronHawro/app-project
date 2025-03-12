@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { Comment } from './comment.entity';
 import { CreateCommentDTO } from './dto/comment.dto';
@@ -12,7 +12,7 @@ export class CommentController {
         return this.commentService.findAll();
     }
 
-    @Get('/:id')
+    @Get('/id/:id')
     getComment(@Param() params: {id: number}): Promise<Comment> {
         return this.commentService.findOne(params.id);
     }
@@ -23,7 +23,13 @@ export class CommentController {
         return this.commentService.create(body);
     }
 
-    @Delete('/:id')
+    @Put('/id/:id')
+    @UsePipes(new ValidationPipe())
+    updateUser(@Param() params: {id: number}, @Body() createUserDTO: CreateCommentDTO): Promise<Comment> {
+        return this.commentService.update(params.id, createUserDTO);
+    }
+
+    @Delete('/id/:id')
     deleteComment(@Param() params: {id: number}): Promise<void> {
         return this.commentService.deleteById(params.id);
     }

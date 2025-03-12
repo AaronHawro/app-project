@@ -15,14 +15,18 @@ export class TaskService {
   }
 
   getTask(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/task/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/task/id/${id}`);
   }
 
   createTask(data: any) {
     return this.http.post(`${this.apiUrl}/task`, data);
   }
 
+  updateTask(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/task/id/${id}`, data);
+  }
+
   deleteTask(id: number) {
-    return this.http.delete(`${this.apiUrl}/task/${id}`);
+    return this.http.delete(`${this.apiUrl}/task/id/${id}`);
   }
 }

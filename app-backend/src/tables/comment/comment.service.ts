@@ -23,6 +23,11 @@ export class CommentService {
         const newComment = this.commentsRepository.create(data);
         return this.commentsRepository.save(newComment);
       }
+
+      async update(id: number, data: CreateCommentDTO): Promise<Comment> {
+        this.commentsRepository.update(id, data);
+        return this.commentsRepository.findOneBy({id});
+      }
     
       async deleteById(id: number): Promise<void> {
         await this.commentsRepository.delete(id);

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { TeamService } from './team.service';
 import { Team } from './team.entity';
 import { CreateTeamDTO } from './dto/team.dto';
@@ -12,7 +12,7 @@ export class TeamController {
         return this.teamService.findAll();
     }
 
-    @Get('/:id')
+    @Get('/id/:id')
     getTeam(@Param() params: {id: number}): Promise<Team> {
         return this.teamService.findOne(params.id);
     }
@@ -23,7 +23,13 @@ export class TeamController {
         return this.teamService.create(body);
     }
 
-    @Delete('/:id')
+    @Put('/id/:id')
+    @UsePipes(new ValidationPipe())
+    updateUser(@Param() params: {id: number}, @Body() createUserDTO: CreateTeamDTO): Promise<Team> {
+        return this.teamService.update(params.id, createUserDTO);
+    }
+
+    @Delete('/id/:id')
     deleteTeam(@Param() params: {id: number}): Promise<void> {
         return this.teamService.deleteById(params.id);
     }
