@@ -5,4 +5,9 @@ export class CreateCommentDTO {
 
     @IsString()
     comment: String;
+
+    // realations
+    userId: number | undefined;
+
+    taskId: number | undefined;
 }
