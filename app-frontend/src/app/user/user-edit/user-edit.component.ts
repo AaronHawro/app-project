@@ -14,19 +14,16 @@ export class UserEditComponent {
   
   userId: number = 0;
   newName: string = ''; newUsername: string = ''; newPassword: string = ''; newEmail: string = ''; newRank: string = '';
-  userData = { 
-    name: `${this.newName}`,
-    username: `${this.newUsername}`,
-    password: `${this.newPassword}`,
-    email: `${this.newEmail}`,
-    rank: `${this.newRank}`
-  }
-
+  
   update() {
-    console.log(this.newPassword);
+    let userData = { 
+      name:  this.newName,
+      username:  this.newUsername,
+      password:  this.newPassword,
+      email:  this.newEmail,
+      rank: this.newRank
+    }
 
-    this.userService.updateUser(this.userId, this.userData).subscribe(user => {
-      console.log(user);
-    })
+    this.userService.updateUser(this.userId, userData).subscribe()
   }
 }

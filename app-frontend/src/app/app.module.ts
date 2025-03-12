@@ -27,6 +27,6 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch())
   ],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
