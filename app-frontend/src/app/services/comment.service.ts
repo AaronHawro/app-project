@@ -14,7 +14,7 @@ export class CommentService {
     return this.http.get(`${this.apiUrl}/comment`);
   }
 
-  getComment(id: number) {
+  getCommentById(id: number) {
     return this.http.get<any>(`${this.apiUrl}/comment/id/${id}`);
   }
 

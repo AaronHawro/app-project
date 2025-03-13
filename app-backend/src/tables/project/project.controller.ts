@@ -13,8 +13,8 @@ export class ProjectController {
     }
 
     @Get('/id/:id')
-    getProject(@Param() params: {id: number}): Promise<Project> {
-        return this.projectService.findOne(params.id);
+    getProjectById(@Param() params: {id: number}): Promise<Project | null> {
+        return this.projectService.findOneById(params.id);
     }
 
     @Post()

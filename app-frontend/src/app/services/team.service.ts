@@ -14,7 +14,7 @@ export class TeamService {
     return this.http.get(`${this.apiUrl}/team`);
   }
 
-  getTeam(id: number) {
+  getTeamById(id: number) {
     return this.http.get<any>(`${this.apiUrl}/team/id/${id}`);
   }
 

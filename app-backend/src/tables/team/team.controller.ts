@@ -13,8 +13,8 @@ export class TeamController {
     }
 
     @Get('/id/:id')
-    getTeam(@Param() params: {id: number}): Promise<Team> {
-        return this.teamService.findOne(params.id);
+    getTeamById(@Param() params: {id: number}): Promise<Team | null> {
+        return this.teamService.findOneById(params.id);
     }
 
     @Post()

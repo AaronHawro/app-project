@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPi
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { CreateUserDTO } from './dto/user.dto';
-import { Task } from '../task/task.entity';
 
 @Controller('user')
 export class UserController {
@@ -14,18 +13,13 @@ export class UserController {
     }
 
     @Get('/id/:id')
-    getUserById(@Param() params: {id: number}): Promise<User> {
+    getUserById(@Param() params: {id: number}): Promise<User | null> {
         return this.userService.findById(params.id);
     }
 
     @Get('/username/:username')
     getUserByName(@Param() params: {username: string}): Promise<User | null> {
         return this.userService.findByUsername(params.username);
-    }
-
-    @Get('/id/:id/tasks')
-    getUserTasksById(@Param() params: {id: number}): Promise<Task[]> {
-        return this.userService.findUserTasks(params.id)
     }
 
     @Post()

@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable, ManyToOne} from 'typeorm';
 import { Task } from '../task/task.entity';
 import { Comment } from '../comment/comment.entity';
 import { Team } from '../team/team.entity';
@@ -24,12 +24,12 @@ export class User {
     rank: String;
 
     // relations
-    @ManyToMany(() => Team, (team) => team.users)
-    teams: Team[];
+    @ManyToOne(() => Team, team => team.users)
+    team: Team;
 
-    @OneToMany(() => Task, (task) => task.user)
+    @OneToMany(() => Task, task => task.user)
     tasks: Task[];
 
-    @OneToMany(() => Comment, (comment) => comment.user)
+    @OneToMany(() => Comment, comment => comment.user)
     comments: Comment[];
 }

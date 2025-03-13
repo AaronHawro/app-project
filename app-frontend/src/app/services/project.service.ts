@@ -14,7 +14,7 @@ export class ProjectService {
     return this.http.get(`${this.apiUrl}/project`);
   }
 
-  getProject(id: number) {
+  getProjectById(id: number) {
     return this.http.get<any>(`${this.apiUrl}/project/id/${id}`);
   }
 

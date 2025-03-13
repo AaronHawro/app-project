@@ -22,10 +22,6 @@ export class UserService {
     return this.http.get<any>(`${this.apiUrl}/user/username/${username}`);
   }
 
-  getUserTasksById(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/user/id/${id}/tasks`);
-  }
-
   createUser(data: any) {
     return this.http.post(`${this.apiUrl}/user`, data);
   }
