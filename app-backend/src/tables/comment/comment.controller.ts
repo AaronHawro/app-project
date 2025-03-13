@@ -13,8 +13,8 @@ export class CommentController {
     }
 
     @Get('/id/:id')
-    getComment(@Param() params: {id: number}): Promise<Comment> {
-        return this.commentService.findOne(params.id);
+    getCommentById(@Param() params: {id: number}): Promise<Comment | null> {
+        return this.commentService.findOneById(params.id);
     }
 
     @Post()

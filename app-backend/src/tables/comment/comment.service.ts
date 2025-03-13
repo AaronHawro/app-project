@@ -15,12 +15,20 @@ export class CommentService {
         return this.commentsRepository.find();
       }
     
-      async findOne(id: number): Promise<Comment> {
-        return this.commentsRepository.findOneBy({id});
+      async findOneById(id: number): Promise<Comment | null> {
+        const comment = await this.commentsRepository.findOne({
+          where: {id},
+          relations: ['user', 'task']
+        });
+        return comment;
       }
     
       async create(data: CreateCommentDTO): Promise<Comment> {
-        const newComment = this.commentsRepository.create(data);
+        const newComment = this.commentsRepository.create({
+          ...data,
+          user: {id: data.userId},
+          task: {id: data.taskId}
+        });
         return this.commentsRepository.save(newComment);
       }
 

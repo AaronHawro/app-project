@@ -10,13 +10,10 @@ export class Comment {
     @Column()
     comment: String;
 
-    // @Column()
-    // commentee: String / number; 
-
     // relations
-    @ManyToOne(() => User, (user) => user.comments)
+    @ManyToOne(() => User, user => user.comments)
     user: User;
 
-    @ManyToOne(() => Task, (task) => task.comments)
+    @ManyToOne(() => Task, task => task.comments)
     task: Task;
 }

@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPi
 import { TaskService } from './task.service';
 import { Task } from './task.entity';
 import { CreateTaskDTO } from './dto/task.dto';
+import { Comment } from '../comment/comment.entity';
 
 @Controller('task')
 export class TaskController {
@@ -13,8 +14,13 @@ export class TaskController {
     }
 
     @Get('/id/:id')
-    getTask(@Param() params: {id: number}): Promise<Task> {
-        return this.taskService.findOne(params.id);
+    getTaskById(@Param() params: {id: number}): Promise<Task | null> {
+        return this.taskService.findOneById(params.id);
+    }
+    
+    @Get('/id/:id/comments')
+    getTaskComments(@Param() params: {id: number}): Promise<Comment[]> {
+        return this.taskService.findTaskComments(params.id);
     }
 
     @Post()

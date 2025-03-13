@@ -17,4 +17,7 @@ export class CreateUserDTO {
 
     @IsString()
     rank: String;
+
+    // relations
+    teamIds?: number[] | undefined;
 }

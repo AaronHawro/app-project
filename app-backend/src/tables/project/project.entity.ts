@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable} from 'typeorm';
 import { Team } from '../team/team.entity';
 import { Task } from '../task/task.entity';
 
@@ -14,9 +14,9 @@ export class Project {
     deadline: Date;
 
     // relations
-    @OneToMany(() => Task, (task) => task.project)
+    @OneToMany(() => Task, task => task.project)
     tasks: Task[];
 
-    @ManyToMany(() => Team, (team) => team.projects)
+    @ManyToMany(() => Team, team => team.projects)
     teams: Team[];
 }

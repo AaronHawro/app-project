@@ -14,8 +14,12 @@ export class TaskService {
     return this.http.get(`${this.apiUrl}/task`);
   }
 
-  getTask(id: number) {
+  getTaskById(id: number) {
     return this.http.get<any>(`${this.apiUrl}/task/id/${id}`);
+  }
+
+  getTaskComments(id: number) {
+    return this.http.get(`${this.apiUrl}/task/id/${id}/comments`)
   }
 
   createTask(data: any) {

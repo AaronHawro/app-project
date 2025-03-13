@@ -14,4 +14,9 @@ export class CreateTaskDTO {
 
     @IsNumber()
     placement: number;
+
+    // relations
+    userId: number | undefined;
+
+    projectId: number | undefined;
 }
