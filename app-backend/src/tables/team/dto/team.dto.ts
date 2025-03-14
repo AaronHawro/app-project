@@ -5,4 +5,9 @@ export class CreateTeamDTO {
 
     @IsString()
     name: String;
+
+    // relations
+    userIds: number[] | undefined;
+    
+    projectIds: number[] | undefined;
 }

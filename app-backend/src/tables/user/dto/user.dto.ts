@@ -20,4 +20,8 @@ export class CreateUserDTO {
 
     // relations
     teamId: number | undefined;
+
+    taskIds: number[] | undefined;
+
+    commentIds: number[] | undefined;
 }

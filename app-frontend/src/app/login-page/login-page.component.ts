@@ -24,6 +24,10 @@ export class LoginPageComponent {
         console.log("incorrect password");
       }else {
         this.authService.setCurrentUser(user);
+
+        this.authService.currentUser$.subscribe(currentUser => {
+          console.log(currentUser); //
+        })
       }
     })
   }

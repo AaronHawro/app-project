@@ -37,18 +37,14 @@ export class UserService {
   }
 
   async update(id: number, data: CreateUserDTO): Promise<User> {
-    this.usersRepository.update(id, data);
-    return this.usersRepository.findOneBy({id});
-
-    // const user = await this.usersRepository.findOneBy({id});
-    // Object.assign(user, data);
-    // return this.usersRepository.save(user);
-  }
-
-  async changeUserTeam(id: number, teamId: number): Promise<User | null> {
-    const user = await this.usersRepository.findOne({where: {id}});
-    user!.team = { id: teamId } as any;
-    return this.usersRepository.save(user as User);
+    const user = await this.usersRepository.findOneBy({id});
+    Object.assign(user, {
+      ...data,
+      team: {id: data.teamId} as any,
+      tasks: {id: data.taskIds} as any,
+      comments: {id: data.commentIds} as any
+      });
+    return this.usersRepository.save(user);
   }
 
   async deleteById(id: number): Promise<void> {

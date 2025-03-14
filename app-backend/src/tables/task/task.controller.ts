@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPi
 import { TaskService } from './task.service';
 import { Task } from './task.entity';
 import { CreateTaskDTO } from './dto/task.dto';
-import { Comment } from '../comment/comment.entity';
 
 @Controller('task')
 export class TaskController {
@@ -18,11 +17,6 @@ export class TaskController {
         return this.taskService.findOneById(params.id);
     }
     
-    @Get('/id/:id/comments')
-    getTaskComments(@Param() params: {id: number}): Promise<Comment[]> {
-        return this.taskService.findTaskComments(params.id);
-    }
-
     @Post()
     @UsePipes(new ValidationPipe())
     createTask(@Body() body: CreateTaskDTO): Promise<Task> {

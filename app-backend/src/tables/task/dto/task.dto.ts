@@ -19,4 +19,6 @@ export class CreateTaskDTO {
     userId: number | undefined;
 
     projectId: number | undefined;
+
+    commentIds: number[] | undefined;
 }

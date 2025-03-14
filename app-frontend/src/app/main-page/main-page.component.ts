@@ -17,15 +17,20 @@ export class MainPageComponent {
   ) {}
 
   ngOnInit() {
-    this.findUserProjects();
+    console.log(this.authService.currentUser$)
+    if(this.authService.currentUser$) {
+      this.findUserProjects();
+    } else {
+
+    }
   }
 
   
   findUserProjects() {
-    this.authService.currentUser.subscribe(currentUser => {
+    this.authService.currentUser$.subscribe(currentUser => {
       const currentUserId = currentUser?.id;
       this.userService.getUserById(currentUserId!).subscribe(user => {
-        this.teamService.getTeamById(user.team).subscribe(team => {
+        this.teamService.getTeamById(user.team.id).subscribe(team => {
           console.log(team.projects);
         })
       })

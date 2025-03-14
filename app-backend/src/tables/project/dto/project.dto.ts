@@ -6,6 +6,11 @@ export class CreateProjectDTO {
     @IsString()
     name: String;
     
-    @IsDate()
+    // @IsDate()
     deadline: Date;
+
+    // relations
+    taskIds: number[] | undefined;
+
+    teamIds: number[] | undefined;
 }
