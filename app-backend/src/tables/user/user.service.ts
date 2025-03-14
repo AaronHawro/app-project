@@ -18,7 +18,7 @@ export class UserService {
   async findById(id: number): Promise<User | null> {
     const user = this.usersRepository.findOne({
       where: {id},
-      relations: ['teams', 'tasks', 'comments']
+      relations: ['team', 'tasks', 'comments']
     });
     return user;
   }
@@ -26,7 +26,7 @@ export class UserService {
   async findByUsername(username: string): Promise<User | null> {
     const user = this.usersRepository.findOne({
       where: {username},
-      relations: ['teams', 'tasks', 'comments']
+      relations: ['team', 'tasks', 'comments']
     });
     return user;
   }

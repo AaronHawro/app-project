@@ -19,5 +19,5 @@ export class CreateUserDTO {
     rank: String;
 
     // relations
-    teamIds?: number[] | undefined;
+    teamId: number | undefined;
 }
