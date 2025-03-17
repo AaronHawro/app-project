@@ -24,21 +24,18 @@ export class CommentService {
   }
 
   async create(data: CreateCommentDTO): Promise<Comment> {
-    const newComment = this.commentsRepository.create({
-      ...data,
-      user: {id: data.userId},
-      task: {id: data.taskId}
-    });
+    const newComment = this.commentsRepository.create(data);
     return this.commentsRepository.save(newComment);
   }
 
   async update(id: number, data: CreateCommentDTO): Promise<Comment> {
-    this.commentsRepository.update(id, {
+    const comment = await this.commentsRepository.findOneBy({id});
+    Object.assign(comment, {
       ...data,
-      user: {id: data.userId},
-      task: {id: data.taskId}
+      user: data.userId ? {id: data.userId} : comment.user,
+      task: data.taskId ? {id: data.taskId} : comment.task
     });
-    return this.commentsRepository.findOneBy({id});
+    return this.commentsRepository.save(comment);
   }
 
   async deleteById(id: number): Promise<void> {

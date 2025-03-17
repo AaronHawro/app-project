@@ -4,10 +4,10 @@ export class CreateCommentDTO {
     _id?: number;
 
     @IsString()
-    comment: String;
+    comment: string;
 
     // realations
-    userId: number | undefined;
+    userId?: number;
 
-    taskId: number | undefined;
+    taskId?: number;
 }

@@ -32,8 +32,8 @@ export class ProjectService {
     const project = await this.projectsRepository.findOneBy({id});
     Object.assign(project, {
       ...data,
-      tasks: {id: data.taskIds},
-      teams: {id: data.teamIds}
+      tasks: data.taskIds ? data.taskIds.map(tIds => ({id: tIds})) : project.tasks,
+      teams: data.teamIds ? data.teamIds.map(tIds => ({id: tIds})) : project.teams
       });
     return this.projectsRepository.save(project);
   }

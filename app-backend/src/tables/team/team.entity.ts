@@ -8,7 +8,7 @@ export class Team {
     id: number;
 
     @Column()
-    name: String;
+    name: string;
 
     // relations
     @OneToMany(() => User, user => user.team)

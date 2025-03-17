@@ -40,9 +40,9 @@ export class UserService {
     const user = await this.usersRepository.findOneBy({id});
     Object.assign(user, {
       ...data,
-      team: {id: data.teamId} as any,
-      tasks: {id: data.taskIds} as any,
-      comments: {id: data.commentIds} as any
+      team: data.teamId ? {id: data.teamId} : user.team,
+      tasks: data.taskIds ? data.taskIds.map(tId => ({id: tId})) : user.tasks,
+      comments: data.commentIds ? data.commentIds.map(cId => ({id: cId})) : user.comments
       });
     return this.usersRepository.save(user);
   }

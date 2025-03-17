@@ -32,9 +32,9 @@ export class TeamService {
     const team = await this.teamsRepository.findOneBy({id});
     Object.assign(team, {
       ...data,
-      users: {id: data.userIds},
-      projects: {id: data.projectIds}
-      });
+      users: data.userIds ? data.userIds.map(uIds => ({id: uIds})) : team.users,
+      projects: data.projectIds ? data.projectIds.map(pIds => ({id: pIds})) : team.projects
+    });
     return this.teamsRepository.save(team);
   }
   

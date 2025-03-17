@@ -1,16 +1,16 @@
-import { IsDate, IsString } from "class-validator"
+import { IsString } from "class-validator"
 
 export class CreateProjectDTO {
     _id?: number;
 
     @IsString()
-    name: String;
+    name: string;
     
     // @IsDate()
     deadline: Date;
 
     // relations
-    taskIds: number[] | undefined;
+    taskIds?: number[];
 
-    teamIds: number[] | undefined;
+    teamIds?: number[];
 }

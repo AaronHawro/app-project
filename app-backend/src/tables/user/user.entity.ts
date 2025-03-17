@@ -9,19 +9,19 @@ export class User {
     id: number;
 
     @Column()
-    name: String;
+    name: string;
 
     @Column()
-    username: String;
+    username: string;
 
     @Column()
-    password: String;
+    password: string;
 
     @Column()
-    email: String;
+    email: string;
 
     @Column()
-    rank: String;
+    rank: string;
 
     // relations
     @ManyToOne(() => Team, team => team.users)

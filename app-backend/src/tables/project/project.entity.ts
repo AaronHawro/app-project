@@ -8,7 +8,7 @@ export class Project {
     id: number;
 
     @Column()
-    name: String;
+    name: string;
 
     @Column()
     deadline: Date;

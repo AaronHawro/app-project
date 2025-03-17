@@ -4,10 +4,10 @@ export class CreateTeamDTO {
     _id?: number;
 
     @IsString()
-    name: String;
+    name: string;
 
     // relations
-    userIds: number[] | undefined;
+    userIds?: number[];
     
-    projectIds: number[] | undefined;
+    projectIds?: number[];
 }

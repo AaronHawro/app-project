@@ -24,10 +24,7 @@ export class TaskService {
   }
 
   async create(data: CreateTaskDTO): Promise<Task> {
-    const newTask = this.tasksRepository.create({
-      ...data,
-      project: {id: data.projectId}
-    });
+    const newTask = this.tasksRepository.create(data);
     return this.tasksRepository.save(newTask);
   }
 
@@ -35,9 +32,9 @@ export class TaskService {
     const task = await this.tasksRepository.findOneBy({id});
     Object.assign(task, {
       ...data,
-      user: {id: data.userId},
-      project: {id: data.projectId},
-      comments: {id: data.commentIds}
+      user: data.userId ? {id: data.userId} : task.user,
+      project: data.projectId ? {id: data.projectId} : task.project,
+      comments: data.commentIds ? data.commentIds.map(cIds => ({id: cIds})) : task.comments
       });
     return this.tasksRepository.save(task);
   }
