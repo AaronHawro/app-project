@@ -4,5 +4,10 @@ export class CreateTeamDTO {
     _id?: number;
 
     @IsString()
-    name: String;
+    name: string;
+
+    // relations
+    userIds?: number[];
+    
+    projectIds?: number[];
 }

@@ -24,13 +24,18 @@ export class TeamService {
   }
   
   async create(createTeamDto: CreateTeamDTO): Promise<Team> {
-    const team = this.teamsRepository.create(createTeamDto);
-    return await this.teamsRepository.save(team);
+    const newTeam = this.teamsRepository.create(createTeamDto);
+    return await this.teamsRepository.save(newTeam);
   }
 
   async update(id: number, data: CreateTeamDTO): Promise<Team> {
-    this.teamsRepository.update(id, data);
-    return this.teamsRepository.findOneBy({id});
+    const team = await this.teamsRepository.findOneBy({id});
+    Object.assign(team, {
+      ...data,
+      users: data.userIds ? data.userIds.map(uIds => ({id: uIds})) : team.users,
+      projects: data.projectIds ? data.projectIds.map(pIds => ({id: pIds})) : team.projects
+    });
+    return this.teamsRepository.save(team);
   }
   
   async deleteById(id: number): Promise<void> {

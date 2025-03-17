@@ -4,20 +4,24 @@ export class CreateUserDTO {
     _id?: number;
 
     @IsString()
-    name: String;
+    name: string;
 
     @IsString()
-    username: String;
+    username: string;
 
     @IsString()
-    password: String;
+    password: string;
 
     @IsEmail()
-    email: String;
+    email: string;
 
     @IsString()
-    rank: String;
+    rank: string;
 
     // relations
-    teamIds?: number[] | undefined;
+    teamId?: number;
+
+    taskIds?: number[];
+
+    commentIds?: number[];
 }

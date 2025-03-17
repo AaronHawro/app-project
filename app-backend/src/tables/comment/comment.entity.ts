@@ -8,7 +8,7 @@ export class Comment {
     id: number;
 
     @Column()
-    comment: String;
+    comment: string;
 
     // relations
     @ManyToOne(() => User, user => user.comments)

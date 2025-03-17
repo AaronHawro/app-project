@@ -9,13 +9,13 @@ export class Task {
     id: number;
 
     @Column()
-    overview: String;
+    overview: string;
 
     @Column()
-    description: String;
+    description: string;
 
     @Column()
-    status: String;
+    status: string;
     
     @Column()
     placement: number;

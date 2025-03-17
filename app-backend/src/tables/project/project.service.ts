@@ -29,8 +29,13 @@ export class ProjectService {
   }
 
   async update(id: number, data: CreateProjectDTO): Promise<Project> {
-    this.projectsRepository.update(id, data);
-    return this.projectsRepository.findOneBy({id});
+    const project = await this.projectsRepository.findOneBy({id});
+    Object.assign(project, {
+      ...data,
+      tasks: data.taskIds ? data.taskIds.map(tIds => ({id: tIds})) : project.tasks,
+      teams: data.teamIds ? data.teamIds.map(tIds => ({id: tIds})) : project.teams
+      });
+    return this.projectsRepository.save(project);
   }
 
   async deleteById(id: number): Promise<void> {

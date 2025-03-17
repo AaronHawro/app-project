@@ -12,7 +12,7 @@ export class UserAddComponent {
     private userService: UserService
   ) {}
   
-  addName: string = ''; addUsername: string = ''; addPassword: string = ''; addEmail: string = ''; addRank: string = '';
+  addName: string = ''; addUsername: string = ''; addPassword: string = ''; addEmail: string = ''; addRank: string = ''; addTeams: number[] = [];
   
   update() {
     let userData = { 
@@ -20,9 +20,10 @@ export class UserAddComponent {
       username:  this.addUsername,
       password:  this.addPassword,
       email:  this.addEmail,
-      rank: this.addRank
+      rank: this.addRank,
+      teamIds: this.addTeams
     }
 
-    this.userService.createUser(userData).subscribe() //not tested but should work
+    this.userService.createUser(userData).subscribe() //not tested
   }
 }
