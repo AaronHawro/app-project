@@ -116,7 +116,8 @@ form .google-btn {
 form .google-btn:hover {
     box-shadow: 0 0 0 2px #FF0000;
     background-color: rgba(10, 102, 194, .05);
-}FF0000.google-btn img {
+}
+.google-btn img {
     height: 20px;
 }
 .signin-para {
@@ -153,7 +154,8 @@ footer {
     margin: 0 .2rem;
 }
 .copyright img {
-    width: 60px;
+    width: 30px;
+    height: 30px;
     filter: grayscale(100%);
 }
 footer * {
