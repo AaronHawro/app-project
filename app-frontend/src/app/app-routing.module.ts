@@ -14,9 +14,10 @@ import { TaskAddComponent } from './task/task-add/task-add.component';
 import { ProjectViewComponent } from './project/project-view/project-view.component';
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { ProjectAddComponent } from './project/project-add/project-add.component';
+import { AuthGuard } from './services/authGuard.service';
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
+  {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginPageComponent},
   {path: 'sign-up', component: UserAddComponent},
   {path: 'user-view', component: UserViewComponent},
