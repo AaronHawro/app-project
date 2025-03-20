@@ -169,7 +169,7 @@ footer > *:hover {
     color: #FF0000;
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   body {
     padding: 1rem;
   }
@@ -198,3 +198,86 @@ footer a {
 
     
  }
+*/
+@media (max-width: 600px) {
+    section {
+        padding: 1rem;
+    }
+    
+    form {
+        width: 100%;
+        max-width: 350px;
+        padding: 1.5rem;
+    }
+    
+    .separator h4 {
+        font-size: 0.9rem;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+        bottom: auto;
+    }
+    footer > * {
+        margin: 0.5rem 0;
+    }
+
+
+
+    section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    section h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+    
+    form {
+        width: 90%;
+        max-width: 300px;
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+    
+    form input {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    form button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+    
+    .google-btn img {
+        height: 18px;
+    }
+    
+    .signin-para {
+        font-size: 0.8rem;
+    }
+    
+    footer {
+        padding: 1rem 0;
+        position: relative;
+        bottom: auto;
+    }
+    footer > * {
+        font-size: 0.75rem;
+        margin: 0.3rem 0;
+    }
+}
+
