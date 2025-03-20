@@ -5,11 +5,11 @@
   </div>
   <div class="navbar-center">
     <ul>
-      <li><a [routerLink]="['']" class="active-link"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/project-add']"> <span>Stwórz projekt</span></a></li>
-      <li><a [routerLink]="['/team-add']"> <span>Stwórz zespół</span></a></li>
-      <li><a [routerLink]="['/team-edit']"> <span>Przydaielanie zespołów</span></a></li>
-      <li><a [routerLink]="['/login']"> <span>Logowanie</span></a></li>
+      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
+      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>zespoły</span></a></li>
+      <li><a [routerLink]="['/project-add']"><img src="/images/jobs.png"> <span>stwórz projekt</span></a></li>
+      <li><a [routerLink]="['']"><img src="/images/message.png"> <span></span></a></li>
+      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>logowanie</span></a></li>
     </ul>
   </div>
   <div class="navbar-right">
@@ -22,7 +22,7 @@
 
 <!----------- ------ profile menu --onclick="toggleMenu()"--------  id="profileMenu"--->
 
-<div class="profile-menu-wrap"        >
+<div class="profile-menu-wrap">
   <div class="profile-menu">
     <div class="user-info">
       <img src="">

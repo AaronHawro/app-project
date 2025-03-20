@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +12,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginPageComponent {
   constructor(
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   // basically linked with [(ngModule)] and recieves data from the html element its linked with
@@ -24,6 +26,7 @@ export class LoginPageComponent {
         console.log("incorrect password");
       }else {
         this.authService.setCurrentUser(user);
+        this.router.navigate(['']);
 
         this.authService.currentUser$.subscribe(currentUser => {
           console.log(currentUser); //

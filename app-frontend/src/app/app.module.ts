@@ -21,6 +21,7 @@ import { TaskViewComponent } from './task/task-view/task-view.component';
 import { TeamEditComponent } from './team/team-edit/team-edit.component';
 import { TeamViewComponent } from './team/team-view/team-view.component';
 import { UserViewComponent } from './user/user-view/user-view.component';
+import { TeamListComponent } from './team/team-list/team-list.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UserViewComponent } from './user/user-view/user-view.component';
     UserAddComponent,
     UserViewComponent,
     UserEditComponent,
+    TeamListComponent,
     TeamViewComponent,
     TeamEditComponent,
     TeamAddComponent,
@@ -38,7 +40,8 @@ import { UserViewComponent } from './user/user-view/user-view.component';
     TaskAddComponent,
     ProjectViewComponent,
     ProjectEditComponent,
-    ProjectAddComponent
+    ProjectAddComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,
