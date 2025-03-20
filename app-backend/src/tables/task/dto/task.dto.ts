@@ -4,14 +4,21 @@ export class CreateTaskDTO {
     _id?: number;
 
     @IsString()
-    overview: String;
+    overview: string;
 
     @IsString()
-    description: String;
+    description: string;
 
     @IsString()
-    status: String;
+    status: string;
 
     @IsNumber()
     placement: number;
+
+    // relations
+    userId?: number;
+
+    projectId?: number;
+
+    commentIds?: number[];
 }

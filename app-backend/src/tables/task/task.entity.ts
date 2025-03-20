@@ -9,24 +9,24 @@ export class Task {
     id: number;
 
     @Column()
-    overview: String;
+    overview: string;
 
     @Column()
-    description: String;
+    description: string;
 
     @Column()
-    status: String;
+    status: string;
     
     @Column()
     placement: number;
 
     // relations
-    @ManyToOne(() => User, (user) => user.tasks)
+    @ManyToOne(() => User, user => user.tasks)
     user: User;
 
-    @ManyToOne(() => Project, (project) => project.tasks)
+    @ManyToOne(() => Project, project => project.tasks)
     project: Project;
 
-    @OneToMany(() => Comment, (comment) => comment.task)
+    @OneToMany(() => Comment, comment => comment.task)
     comments: Comment[];
 }

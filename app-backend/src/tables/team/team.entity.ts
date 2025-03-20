@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, OneToMany, ManyToMany} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable} from 'typeorm';
 import { User } from '../user/user.entity';
 import { Project } from '../project/project.entity';
 
@@ -8,12 +8,13 @@ export class Team {
     id: number;
 
     @Column()
-    name: String;
+    name: string;
 
     // relations
-    @ManyToMany(() => User, (user) => user.teams)
+    @OneToMany(() => User, user => user.team)
     users: User[];
 
-    @ManyToMany(() => Project, (project) => project.teams)
+    @ManyToMany(() => Project, project => project.teams)
+    @JoinTable()
     projects: Project[];
 }

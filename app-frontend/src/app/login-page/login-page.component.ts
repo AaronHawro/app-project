@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +10,8 @@ import { UserService } from '../services/user.service';
 })
 export class LoginPageComponent {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   // basically linked with [(ngModule)] and recieves data from the html element its linked with
@@ -21,7 +23,11 @@ export class LoginPageComponent {
       }else if(this.password != user.password) {
         console.log("incorrect password");
       }else {
-        console.log("logged in as: ", user);
+        this.authService.setCurrentUser(user);
+
+        this.authService.currentUser$.subscribe(currentUser => {
+          console.log(currentUser); //
+        })
       }
     })
   }

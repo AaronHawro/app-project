@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './task-view.component.scss'
 })
 export class TaskViewComponent {
-
+  // comment view & add here
 }

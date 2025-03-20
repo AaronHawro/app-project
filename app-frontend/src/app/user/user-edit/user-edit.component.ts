@@ -24,6 +24,8 @@ export class UserEditComponent {
       rank: this.newRank
     }
 
-    this.userService.updateUser(this.userId, userData).subscribe()
+    this.userService.updateUser(this.userId, userData).subscribe(updatedUser => {
+      console.log(updatedUser);
+    })
   }
 }

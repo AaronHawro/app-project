@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, ManyToOne, ManyToMany} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne} from 'typeorm';
 import { Task } from '../task/task.entity';
 import { Comment } from '../comment/comment.entity';
 import { Team } from '../team/team.entity';
@@ -9,27 +9,27 @@ export class User {
     id: number;
 
     @Column()
-    name: String;
+    name: string;
 
     @Column()
-    username: String;
+    username: string;
 
     @Column()
-    password: String;
+    password: string;
 
     @Column()
-    email: String;
+    email: string;
 
     @Column()
-    rank: String;
+    rank: string;
 
     // relations
-    @ManyToMany(() => Team, (team) => team.users)
-    teams: Team[];
+    @ManyToOne(() => Team, team => team.users)
+    team: Team;
 
-    @OneToMany(() => Task, (task) => task.user)
+    @OneToMany(() => Task, task => task.user)
     tasks: Task[];
 
-    @OneToMany(() => Comment, (comment) => comment.user)
+    @OneToMany(() => Comment, comment => comment.user)
     comments: Comment[];
 }

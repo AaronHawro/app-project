@@ -13,10 +13,10 @@ export class TaskController {
     }
 
     @Get('/id/:id')
-    getTask(@Param() params: {id: number}): Promise<Task> {
-        return this.taskService.findOne(params.id);
+    getTaskById(@Param() params: {id: number}): Promise<Task | null> {
+        return this.taskService.findOneById(params.id);
     }
-
+    
     @Post()
     @UsePipes(new ValidationPipe())
     createTask(@Body() body: CreateTaskDTO): Promise<Task> {

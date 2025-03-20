@@ -15,12 +15,20 @@ export class UserService {
     return this.usersRepository.find();
   }
 
-  async findById(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({id});
+  async findById(id: number): Promise<User | null> {
+    const user = this.usersRepository.findOne({
+      where: {id},
+      relations: ['team', 'tasks', 'comments']
+    });
+    return user;
   }
 
   async findByUsername(username: string): Promise<User | null> {
-    return this.usersRepository.findOneBy({username});
+    const user = this.usersRepository.findOne({
+      where: {username},
+      relations: ['team', 'tasks', 'comments']
+    });
+    return user;
   }
 
   async create(data: CreateUserDTO): Promise<User> {
@@ -29,11 +37,13 @@ export class UserService {
   }
 
   async update(id: number, data: CreateUserDTO): Promise<User> {
-    // this.usersRepository.update(id, data);
-    // return this.usersRepository.findOneBy({id});
-
     const user = await this.usersRepository.findOneBy({id});
-    Object.assign(user, data);
+    Object.assign(user, {
+      ...data,
+      team: data.teamId ? {id: data.teamId} : user.team,
+      tasks: data.taskIds ? data.taskIds.map(tId => ({id: tId})) : user.tasks,
+      comments: data.commentIds ? data.commentIds.map(cId => ({id: cId})) : user.comments
+      });
     return this.usersRepository.save(user);
   }
 
