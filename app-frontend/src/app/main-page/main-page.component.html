@@ -1,6 +1,3 @@
-<p>main-page works!</p>
-<button [routerLink]="['/login']">login-page</button>
-<!-- tu będzie widać wszystkie projekty a w nich zadania i zespoły-->
 <nav class="navbar">
   <div class="navbar-left">
     <a href="app.component.html" class="logo"><img src=""></a>
@@ -8,17 +5,17 @@
   </div>
   <div class="navbar-center">
     <ul>
-      <li><a href="#" class="active-link"><!--<img src="images/home.png">--> <span>Home</span></a></li>
-      <li><a href="#"><img src=""> <span>Stwórz projekt</span></a></li>
-      <li><a href="#"><img src=""> <span>Przydzielanie zespołów</span></a></li>
-      <li><a href="#"><img src=""> <span>użytkownicy</span></a></li>
-      <li><a href="#"><img src=""> <span>coś tam</span></a></li>
+      <li><a [routerLink]="['']" class="active-link"> <span>Home</span></a></li>
+      <li><a [routerLink]="['/project-add']"> <span>Stwórz projekt</span></a></li>
+      <li><a [routerLink]="['/team-add']"> <span>Stwórz zespół</span></a></li>
+      <li><a [routerLink]="['/team-edit']"> <span>Przydaielanie zespołów</span></a></li>
+      <li><a [routerLink]="['/login']"> <span>Logowanie</span></a></li>
     </ul>
   </div>
   <div class="navbar-right">
    <div class="user-structure">
    
-    <img src="" class="nav-profile-img" >
+    <img src="" class="nav-profile-img" [routerLink]="['user-view']">
    
    </div>
   </div>
@@ -73,44 +70,31 @@
       <img src="" width="100%">
       <div class="profile-container-ineer">
         <img src="" class="profile-pic">
-        <h1>Lorem, ipsum dolor.</h1>
-        <b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, sed. </b>
-        <p>Lokacja &middot; <a href="">Contact Info</a></p>
-        <div class="mutual-connection">
-          <img src="" alt="">
-          <span>1 mutual connection: Lorem ipsum dolor sit.</span>
-        </div>
-        <div class="profile btn">
-          <a href="" class="primary-btn"><img src="">Connect</a>
-          <a href=""><img src="" alt="">Message</a>
-        </div>
+        <h1>Your personal project manager.</h1>
+        <b>you can see and edit your teams and projects.</b>
+        <p>your team:</p>
+        <p [routerLink]="['/team-view']">{{userData.team.name}}:</p>
+        <p *ngFor="let user of teamData.users">
+          - {{user.name}}
+        </p>
       </div>
     </div>
 
-<div class="profile-description">
-  <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum neque id itaque unde, obcaecati rem enim fuga explicabo consectetur vero! Iure dolores voluptates odit in magnam consequuntur ratione unde dolorem. Iste dolorum voluptatibus reprehenderit quis veritatis quasi possimus vitae quod magni cupiditate? Soluta voluptatum animi odit fugiat iste amet! Minima aspernatur cumque, quod laudantium quo fugiat rem culpa sit ut! Asperiores amet excepturi maxime aut consequatur nobis temporibus laboriosam aspernatur eos minima dolore illum, sit expedita facere earum dolor quia magnam tempore atque, praesentium veniam saepe molestiae. Numquam consequuntur temporibus, officia voluptates dignissimos quisquam earum aliquid consequatur harum ratione. Deserunt!</p>
-  <a href="#" class="see-more-link">See more...</a>
-</div>
-
-<div class="profile-description">
-  <h2>Lorem, ipsum dolor.</h2>
-  <div class="profile-desc-row">
-    <img src="" >
-    <div>
-      <h3>Lorem ipsum dolor sit.</h3>
-      <b>Lorem ipsum dolor  &middot; sit amet consectetur. </b>
-      <b>Mar 2025 - Present &middot; </b>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, laborum! Tempore, asperiores eaque dolores quisquam aut nam consectetur maxime aperiam id suscipit sint ipsam voluptates blanditiis quibusdam ut rerum quod.</p>
-<hr>
-    </div>
-  </div>
-</div>
-
-<div class="profile-description">
-  <h2>Lorem ipsum dolor sit amet.</h2>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum neque id itaque unde, obcaecati rem enim fuga explicabo consectetur vero! Iure dolores voluptates odit in magnam consequuntur ratione unde dolorem. Iste dolorum voluptatibus reprehenderit quis veritatis quasi possimus vitae quod magni cupiditate? Soluta voluptatum animi odit fugiat iste amet! Minima aspernatur cumque, quod laudantium quo fugiat rem culpa sit ut! Asperiores amet excepturi maxime aut consequatur nobis temporibus laboriosam aspernatur eos minima dolore illum, sit expedita facere earum dolor quia magnam tempore atque, praesentium veniam saepe molestiae. Numquam consequuntur temporibus, officia voluptates dignissimos quisquam earum aliquid consequatur harum ratione. Deserunt!</p>
-  <a href="#" class="see-more-link">See more...</a>
+<div *ngFor="let project of projectsData" class="profile-description">
+  <h2>{{project.name}}</h2>
+  <h4>deadline: {{project.deadline}}</h4>
+  <ul>
+    <p>tasks:</p>
+    <p *ngFor="let task of project.tasks">
+      - {{task.overview}}: {{task.status}}
+    </p>
+    <br>
+    <p>teams:</p>
+    <p *ngFor="let team of project.teams">
+      - {{team.name}}
+    </p>
+  </ul>
+  <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
 </div>
 
   </div>
@@ -173,31 +157,3 @@
 
   </div>
 </div>
-
-<div class="profile-footer">
-  <div class="sidebar-useful-links">
-    <a href="#">About</a>
-    <a href="#">Accessiblity</a>
-    <a href="#">Help Center</a>
-    <a href="#">Privacy Policy</a>
-    <a href="#">Advertising</a>
-    <a href="#">Get the Nap</a>
-    <a href="#">More</a>
-
-    <div class="copyright-msg">
-      <img src="" alt="">
-      <p> &#169; 2025. All right reserved</p>
-    </div>
-  </div>
-</div>
-
-<!--<script>
-
-  let profileMenu = document.getElementById("profileMenu");
-
-  function toggleMenu(){
-    profileMenu.classList.toggle("open-menu");
-  }
-</script>
--->
-
