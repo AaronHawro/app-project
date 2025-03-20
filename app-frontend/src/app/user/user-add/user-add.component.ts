@@ -24,8 +24,9 @@ export class UserAddComponent {
       rank: this.addRank
     }
 
-    this.userService.createUser(userData).subscribe(user => {
-      this.result = user ? 'user added successfully' : 'user could not be added (chceck email validity)'; // not working
+    this.userService.createUser(userData).subscribe
+    this.userService.getUserByUsername(this.addUsername).subscribe(user => {
+      user ? this.result =  'user added successfully' : this.result =  'user could not be added (chceck email validity)';
     })
   }
 }

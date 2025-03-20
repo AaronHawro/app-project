@@ -27,10 +27,6 @@ export class LoginPageComponent {
       }else {
         this.authService.setCurrentUser(user);
         this.router.navigate(['']);
-
-        this.authService.currentUser$.subscribe(currentUser => {
-          console.log(currentUser); //
-        })
       }
     })
   }
