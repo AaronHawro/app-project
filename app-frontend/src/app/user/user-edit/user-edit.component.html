@@ -1,8 +1,8 @@
-<input type="number" placeholder="id" [(ngModel)]="userId">
-<input type="text" placeholder="name" [(ngModel)]="newName">
-<input type="text" placeholder="username" [(ngModel)]="newUsername">
-<input type="text" placeholder="password" [(ngModel)]="newPassword">
-<input type="text" placeholder="email" [(ngModel)]="newEmail">
-<input type="text" placeholder="rank" [(ngModel)]="newRank">
+<input type="number" placeholder="id" [(ngModel)]="userId" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="name" [(ngModel)]="newName" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="username" [(ngModel)]="newUsername" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="password" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="email" [(ngModel)]="newEmail" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="rank" [(ngModel)]="newRank" [ngModelOptions]="{standalone: true}">
 <button (click)="update()">update</button>
 <!-- tu będzie można edytowwać swój profil-->

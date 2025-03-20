@@ -15,6 +15,7 @@ import { ProjectViewComponent } from './project/project-view/project-view.compon
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { ProjectAddComponent } from './project/project-add/project-add.component';
 import { AuthGuard } from './services/authGuard.service';
+import { TeamListComponent } from './team/team-list/team-list.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'sign-up', component: UserAddComponent},
   {path: 'user-view', component: UserViewComponent},
   {path: 'user-edit', component: UserEditComponent},
+  {path: 'team-list', component: TeamListComponent},
   {path: 'team-view', component: TeamViewComponent},
   {path: 'team-edit', component: TeamEditComponent},
   {path: 'team-add', component: TeamAddComponent},

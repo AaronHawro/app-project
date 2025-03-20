@@ -1,1 +1,7 @@
-<p>user-add works!</p>
+<input type="text" placeholder="name" [(ngModel)]="addName" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="username" [(ngModel)]="addUsername" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="password" [(ngModel)]="addPassword" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="email" [(ngModel)]="addEmail" [ngModelOptions]="{standalone: true}">
+<input type="text" placeholder="rank" [(ngModel)]="addRank" [ngModelOptions]="{standalone: true}">
+<button (click)="addUser()">Add new User</button>
+<p>{{result}}</p>
