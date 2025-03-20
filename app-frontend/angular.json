@@ -93,6 +93,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               {
+                "output": "/",
                 "glob": "**/*",
                 "input": "public"
               }
