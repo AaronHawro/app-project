@@ -1,5 +1,28 @@
-<p>project-view works!</p>
+
 <!-- tu będą widoczne wszystkie detale projektu tzn. status, zadania, zespoły przynależące -->
+
+<nav class="navbar">
+  <div class="navbar-left">
+    <a href="main-page.component.html" class="logo"><img src="/images/logo.png" alt="Logo"></a>
+  </div>
+  <div class="navbar-center">
+    <ul>
+      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png" alt="Home"> <span>Home</span></a></li>
+      <li><a [routerLink]="['/project-add']"><img src="/images/network.png" alt="Project Add"> <span>Stwórz projekt</span></a></li>
+      <li><a [routerLink]="['/team-add']"><img src="/images/jobs.png" alt="Team Add"> <span>Przydzielanie zespołów</span></a></li>
+      <li><a [routerLink]="['/team-edit']"><img src="/images/message.png" alt="Team Edit"> <span>Użytkownicy</span></a></li>
+      <li><a [routerLink]="['/login']"><img src="/images/notification.png" alt="Notifications"> <span>Coś tam</span></a></li>
+    </ul>
+  </div>
+  <div class="navbar-right">
+    <div class="user-structure">
+      <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['user-view']" alt="Profile">
+    </div>
+  </div>
+</nav>
+
+
+
 
 <div class="container">
   <div class="todo-app">
@@ -8,10 +31,12 @@
     <input type="text" id="input-box"  placeholder="Add your text">
     <button>Add</button>
   </div>
+  <div class="list">
   <ul id="list-cointainer">
     <li class="checked">Task 1</li>
     <li>Task 2</li>
     <li>Task 3</li>
   </ul>
+</div>
 </div>
 </div>
