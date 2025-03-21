@@ -24,14 +24,14 @@ const routes: Routes = [
   {path: 'user-view', component: UserViewComponent},
   {path: 'user-edit', component: UserEditComponent},
   {path: 'team-list', component: TeamListComponent},
-  {path: 'team-view', component: TeamViewComponent},
-  {path: 'team-edit', component: TeamEditComponent},
+  {path: 'team-view/:id', component: TeamViewComponent},
+  {path: 'team-edit/:id', component: TeamEditComponent},
   {path: 'team-add', component: TeamAddComponent},
-  {path: 'task-view', component: TaskViewComponent},
-  {path: 'task-edit', component: TaskEditComponent},
-  {path: 'task-add', component: TaskAddComponent},
-  {path: 'project-view', component: ProjectViewComponent},
-  {path: 'project-edit', component: ProjectEditComponent},
+  {path: 'task-view/:id', component: TaskViewComponent},
+  {path: 'task-edit/:id', component: TaskEditComponent},
+  {path: 'task-add/:id', component: TaskAddComponent},
+  {path: 'project-view/:id', component: ProjectViewComponent},
+  {path: 'project-edit/:id', component: ProjectEditComponent},
   {path: 'project-add', component: ProjectAddComponent}
 ];
 

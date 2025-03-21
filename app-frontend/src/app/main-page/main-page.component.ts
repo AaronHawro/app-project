@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { TeamService } from '../services/team.service';
 import { ProjectService } from '../services/project.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -20,15 +21,25 @@ export class MainPageComponent {
     private userService: UserService,
     private teamService: TeamService,
     private projectService: ProjectService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    console.log('MainPage initialized');
+    
     this.findUserProjects();
+  }
+
+  ngOnDestroy() {
+    console.log('MainPage destroyed');
+    // Remove any global listeners if added
   }
 
   
   findUserProjects() {
+    console.log('finduserprojecs');
+
     this.authService.currentUser$.subscribe(currentUser => {
       const currentUserId = currentUser?.id;
 
@@ -45,6 +56,19 @@ export class MainPageComponent {
           }
         })
       })
+    })
+  }
+
+  verifyUser() {
+    console.log('veridklasluser');
+
+    this.authService.currentUser$.subscribe(currentUser => {
+      console.log(currentUser!.rank)
+      if(currentUser!.rank == 'programmer') {
+        alert("You dont have the right permissions to do that");
+      }else {
+        this.router.navigate(['/project-add']);
+      }
     })
   }
 }

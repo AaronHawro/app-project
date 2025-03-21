@@ -1,2 +1,14 @@
-<p>user-view works!</p>
-<!-- tu będzie można widzieć swój lub cudzy profil-->
+<ul>
+    <li><h2>{{userData?.name}}</h2></li>
+    <li>{{userData?.username}}</li>
+    <li>{{userData?.email}}</li>
+    <li>{{userData?.rank}}</li>
+</ul>
+
+<ul>
+    <li><h3>{{teamData?.name}}</h3></li>
+    <li *ngFor="let user of teamData?.users">{{user.name}}</li>
+</ul>
+
+<button [routerLink]="['/user-edit']">edit</button>
+<button [routerLink]="['']">main page</button>
