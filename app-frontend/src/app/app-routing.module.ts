@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'sign-up', component: UserAddComponent},
   {path: 'user-view', component: UserViewComponent},
+  {path: 'user-add', component: UserAddComponent},
   {path: 'user-edit', component: UserEditComponent},
   {path: 'team-view', component: TeamViewComponent},
   {path: 'team-edit', component: TeamEditComponent},

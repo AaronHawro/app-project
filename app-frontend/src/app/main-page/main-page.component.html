@@ -22,10 +22,10 @@
 
 <!----------- ------ profile menu --onclick="toggleMenu()"--------  id="profileMenu"--->
 
-<div class="profile-menu-wrap"        >
+<div class="profile-menu-wrap"     >
   <div class="profile-menu">
     <div class="user-info">
-      <img src="">
+      <img src="/images/logo.png">
       <div>
         <h3>Lorem, ipsum dolor.</h3>
         <a href="#">See your profile</a>
@@ -67,17 +67,45 @@
 <div class="container">
   <div class="main">
     <div class="profile-container">
-      <img src="" width="100%">
+      <img src="" width="100%" >
       <div class="profile-container-ineer">
         <img src="" class="profile-pic">
-        <h1>Your personal project manager.</h1>
-        <b>you can see and edit your teams and projects.</b>
+        <h1>Your Personal Project Manager</h1>
+        
+        <b>You can see and edit your teams and projects</b>
+        
         <p>your team:</p>
-        <p [routerLink]="['/team-view']">{{userData.team.name}}:</p>
+        <p [routerLink]="['/team-view']" class="team">{{userData.team.name}}:</p>
         <p *ngFor="let user of teamData.users">
           - {{user.name}}
         </p>
+      
+    </div>
+    </div>
+<!-------------------------- wazne -->
+    <div *ngFor="let project of projectsData" class="profile-description">
+      <h2>{{project.name}}</h2>
+      <div class="deadline">
+        <h4>deadline: {{project.deadline}}</h4>
       </div>
+      <ul>
+        <p>tasks:</p>
+        <p *ngFor="let task of project.tasks">
+          - {{task.overview}}: {{task.status}}
+        </p>
+        <br>
+        <hr>
+        <br>
+        <p>teams:</p>
+        <p *ngFor="let team of project.teams">
+          - {{team.name}}
+        </p>
+        <br>
+        <hr>
+      </ul>
+      <br>
+      
+      <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
     </div>
 
     <div *ngFor="let project of projectsData" class="profile-description">
@@ -105,28 +133,11 @@
       <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
     </div>
 
-<div *ngFor="let project of projectsData" class="profile-description">
-  <h2>{{project.name}}</h2>
-  <h4>deadline: {{project.deadline}}</h4>
-  <ul>
-    <p>tasks:</p>
-    <p *ngFor="let task of project.tasks">
-      - {{task.overview}}: {{task.status}}
-    </p>
-    <br>
-    <p>teams:</p>
-    <p *ngFor="let team of project.teams">
-      - {{team.name}}
-    </p>
-  </ul>
-  <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
-</div>
-
-<div class="profile-description">
+<!--<div class="profile-description">
   <h2>sałata wymiata honej bubu</h2>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum neque id itaque unde, obcaecati rem enim fuga explicabo consectetur vero! Iure dolores voluptates odit in magnam consequuntur ratione unde dolorem. Iste dolorum voluptatibus reprehenderit quis veritatis quasi possimus vitae quod magni cupiditate? Soluta voluptatum animi odit fugiat iste amet! Minima aspernatur cumque, quod laudantium quo fugiat rem culpa sit ut! Asperiores amet excepturi maxime aut consequatur nobis temporibus laboriosam aspernatur eos minima dolore illum, sit expedita facere earum dolor quia magnam tempore atque, praesentium veniam saepe molestiae. Numquam consequuntur temporibus, officia voluptates dignissimos quisquam earum aliquid consequatur harum ratione. Deserunt!</p>
   <a href="#" class="see-more-link">See more...</a>
-</div>
+</div>-->
 
   </div>
 
@@ -145,7 +156,7 @@
 <div class="sidebar-people">
   <h3>People you may know</h3>
   <div class="sidebar-people-row">
-    <img src="">
+    <img src="/images/logo.png">
     <div>
       <h2>Lorem, ipsum dolor.</h2>
       <p>Lorem ipsum dolor sit amet.</p>
@@ -153,7 +164,7 @@
     </div>
   </div>
   <div class="sidebar-people-row">
-    <img src="">
+    <img src="/images/logo.png">
     <div>
       <h2>kamil kasiepik</h2>
       <p>Lorem ipsum dolor sit amet.</p>
@@ -161,7 +172,7 @@
     </div>
   </div>
   <div class="sidebar-people-row">
-    <img src="">
+    <img src="/images/logo.png">
     <div>
       <h2>adam zachy</h2>
       <p>Lorem ipsum dolor sit amet.</p>
@@ -169,7 +180,7 @@
     </div>
   </div>
   <div class="sidebar-people-row">
-    <img src="">
+    <img src="/images/logo.png">
     <div>
       <h2>magda dąbska</h2>
       <p>Lorem ipsum dolor sit amet.</p>
@@ -177,7 +188,7 @@
     </div>
   </div>
   <div class="sidebar-people-row">
-    <img src="">
+    <img src="/images/logo.png">
     <div>
       <h2>Franek Bananek</h2>
       <p>Lorem ipsum dolor sit amet.</p>
