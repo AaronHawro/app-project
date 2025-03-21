@@ -88,19 +88,19 @@ ul li::before {
   height: 28px;
   width: 28px;
   border-radius: 50%;
-  
   background-size: cover;
   background-position: center;
   top: 12px;
   left: 8px;
 }
 
-ul li.checked {
+.checked {
 color: #555;
 text-decoration: line-through;
 }
-ul li.checked::before {
-  
+
+.in-progress {
+  text-decoration: underline;
 }
 
 ul li span {

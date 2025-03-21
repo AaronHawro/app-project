@@ -15,6 +15,7 @@ import { ProjectViewComponent } from './project/project-view/project-view.compon
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { ProjectAddComponent } from './project/project-add/project-add.component';
 import { AuthGuard } from './services/authGuard.service';
+import { TeamListComponent } from './team/team-list/team-list.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
@@ -23,14 +24,15 @@ const routes: Routes = [
   {path: 'user-view', component: UserViewComponent},
   {path: 'user-add', component: UserAddComponent},
   {path: 'user-edit', component: UserEditComponent},
-  {path: 'team-view', component: TeamViewComponent},
-  {path: 'team-edit', component: TeamEditComponent},
+  {path: 'team-list', component: TeamListComponent},
+  {path: 'team-view/:id', component: TeamViewComponent},
+  {path: 'team-edit/:id', component: TeamEditComponent},
   {path: 'team-add', component: TeamAddComponent},
-  {path: 'task-view', component: TaskViewComponent},
-  {path: 'task-edit', component: TaskEditComponent},
-  {path: 'task-add', component: TaskAddComponent},
-  {path: 'project-view', component: ProjectViewComponent},
-  {path: 'project-edit', component: ProjectEditComponent},
+  {path: 'task-view/:id', component: TaskViewComponent},
+  {path: 'task-edit/:id', component: TaskEditComponent},
+  {path: 'task-add/:id', component: TaskAddComponent},
+  {path: 'project-view/:id', component: ProjectViewComponent},
+  {path: 'project-edit/:id', component: ProjectEditComponent},
   {path: 'project-add', component: ProjectAddComponent}
 ];
 

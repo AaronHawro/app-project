@@ -6,10 +6,10 @@
   <div class="navbar-center">
     <ul>
       <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/project-add']"><img src="/images/network.png"> <span>Stwórz projekt</span></a></li>
-      <li><a [routerLink]="['/team-add']"><img src="/images/jobs.png"> <span>Przydzielanie zespołów</span></a></li>
-      <li><a [routerLink]="['/team-edit']"><img src="/images/message.png"> <span>użytkownicy</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>coś tam</span></a></li>
+      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
+      <li><a (click)="verifyUser()"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
+      <li><a [routerLink]="['']"><img src="/images/message.png"> <span>Your comments</span></a></li>
+      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
     </ul>
   </div>
   <div class="navbar-right">
@@ -22,7 +22,7 @@
 
 <!----------- ------ profile menu --onclick="toggleMenu()"--------  id="profileMenu"--->
 
-<div class="profile-menu-wrap"     >
+<div class="profile-menu-wrap">
   <div class="profile-menu">
     <div class="user-info">
       <img src="/images/logo.png">
@@ -75,8 +75,8 @@
         <b>You can see and edit your teams and projects</b>
         
         <p>your team:</p>
-        <p [routerLink]="['/team-view']" class="team">{{userData.team.name}}:</p>
-        <p *ngFor="let user of teamData.users">
+        <p [routerLink]="[`/team-view/${teamData?.id}`]">{{teamData?.name}}:</p>
+        <p *ngFor="let user of teamData?.users">
           - {{user.name}}
         </p>
       
@@ -108,30 +108,22 @@
       <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
     </div>
 
-    <div *ngFor="let project of projectsData" class="profile-description">
-      <h2>{{project.name}}</h2>
-      <div class="deadline">
-        <h4>deadline: {{project.deadline}}</h4>
-      </div>
-      <ul>
-        <p>tasks:</p>
-        <p *ngFor="let task of project.tasks">
-          - {{task.overview}}: {{task.status}}
-        </p>
-        <br>
-        <hr>
-        <br>
-        <p>teams:</p>
-        <p *ngFor="let team of project.teams">
-          - {{team.name}}
-        </p>
-        <br>
-        <hr>
-      </ul>
-      <br>
-      
-      <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
-    </div>
+<div *ngFor="let project of projectsData" class="profile-description">
+  <h2>{{project.name}}</h2>
+  <h4>deadline: {{project.deadline | date:'yyyy-MM-dd' }}</h4>
+  <ul>
+    <p>tasks:</p>
+    <p *ngFor="let task of project.tasks">
+      - {{task.overview}}: {{task.status}}
+    </p>
+    <br>
+    <p>teams:</p>
+    <p *ngFor="let team of project.teams">
+      - {{team.name}}
+    </p>
+  </ul>
+  <a [routerLink]="[`/project-view/${project.id}`]" class="see-more-link">See more...</a>
+</div>
 
 <!--<div class="profile-description">
   <h2>sałata wymiata honej bubu</h2>
