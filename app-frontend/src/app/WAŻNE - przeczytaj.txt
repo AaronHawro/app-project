@@ -1,5 +1,0 @@
-karzdy widok będzie miał w górnym prawym rogu ikone edytowania (oprócz login i main-page),
-po kliknięciu jej strona będdzie sprawdzać z bazą danych czy użytknownik ma odpowiednie uprawnienia,
-w środku karzdego widoku edytowania będzie guzik usunięcia i zapisywania
-
-app component ma zawierać tylko route module, żadnego html i zbędnego kodu

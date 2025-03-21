@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { env } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
-  getProjects() {
-    return this.http.get(`${this.apiUrl}/project`);
+  getProjects(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/project`);
   }
 
   getProjectById(id: number) {

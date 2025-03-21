@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { VerificaitonService } from '../../services/verificaiton.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-add',
@@ -11,7 +12,8 @@ import { VerificaitonService } from '../../services/verificaiton.service';
 export class UserAddComponent {
   constructor(
     private userService: UserService,
-    private verService: VerificaitonService
+    private verService: VerificaitonService,
+    private router: Router
   ) {}
   
   addName: string = ''; addUsername: string = ''; addPassword: string = ''; addEmail: string = ''; addRank: string = '';
@@ -26,9 +28,27 @@ export class UserAddComponent {
       rank: this.addRank
     }
 
-    this.userService.createUser(userData).subscribe
-    this.userService.getUserByUsername(this.addUsername).subscribe(user => {
-      user ? this.result =  'user added successfully' : this.result =  'user could not be added (chceck email validity)';
+    this.userService.getUsers().subscribe(users => {
+      let valid = true;
+      for (let i = 0; i < users.length; i++) {
+        if(userData.username == users[i].username) {
+          valid = false
+        }
+      }
+
+      if(valid) {
+        this.userService.createUser(userData).subscribe({
+          next: () => {
+            this.result = 'User added successfully';
+            this.router.navigate([`/login`]);
+          },
+          error: () => {
+            this.result = 'User could not be added (chceck email validity)';
+          }
+        })
+      }else {
+        this.result = 'This username is already taken';
+      }
     })
   }
 
