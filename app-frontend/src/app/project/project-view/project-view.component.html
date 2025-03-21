@@ -1,17 +1,19 @@
-<p>project-view works!</p>
-<!-- tu będą widoczne wszystkie detale projektu tzn. status, zadania, zespoły przynależące -->
-
 <div class="container">
   <div class="todo-app">
-  <h2>To-Do List <img src=""></h2>
-  <div class="row">
-    <input type="text" id="input-box"  placeholder="Add your text">
-    <button>Add</button>
-  </div>
+  <h2>{{projectData?.name}}<img src="/images/jobs.png"></h2>
+  <h3>Deadline: {{projectData?.deadline | date:'yyyy-MM-dd' }}</h3>
+    <button [routerLink]="[`/task-add/${projectData?.id}`]">Add Tasks</button>
   <ul id="list-cointainer">
-    <li class="checked">Task 1</li>
-    <li>Task 2</li>
-    <li>Task 3</li>
+    <li *ngFor="let task of tasksData">
+      <div *ngIf="task.status == `done`; else elseBlock">
+        {{task.overview}}
+      </div>
+      <ng-template #elseBlock>
+        <p class="checked">{{task.overview}}</p>
+      </ng-template>
+    </li>
   </ul>
+  team, guziki edit i delete (po prawej)
 </div>
+<a [routerLink]="['']">main page</a>
 </div>

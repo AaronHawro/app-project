@@ -16,9 +16,10 @@ export class LoginPageComponent {
     private router: Router
   ) {}
 
-  // basically linked with [(ngModule)] and recieves data from the html element its linked with
   username: string = ''; password: string = ''; 
   tryLogIn() {
+    console.log('trylogin');
+
     this.userService.getUserByUsername(this.username).subscribe(user => {
       if(user == null) {
         console.log("user not found");
