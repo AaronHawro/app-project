@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { VerificaitonService } from '../../services/verificaiton.service';
 
 @Component({
   selector: 'app-project-add',
@@ -8,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class ProjectAddComponent {
 
+  constructor(
+    private verService: VerificaitonService
+  ) {}
+
+
+  verifyPP() {
+    this.verService.verifyManager('/project-add');
+  }
 }

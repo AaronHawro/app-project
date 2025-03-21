@@ -1,16 +1,14 @@
-<p>user-view works!</p>
-<!-- tu będzie można widzieć swój lub cudzy profil-->
 <nav class="navbar">
   <div class="navbar-left">
     <a href="main-page.component.html" class="logo"><img src="/images/logo.png" alt="Logo"></a>
   </div>
   <div class="navbar-center">
     <ul>
-      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png" alt="Home"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/project-add']"><img src="/images/network.png" alt="Project Add"> <span>Stwórz projekt</span></a></li>
-      <li><a [routerLink]="['/team-add']"><img src="/images/jobs.png" alt="Team Add"> <span>Przydzielanie zespołów</span></a></li>
-      <li><a [routerLink]="['/team-edit']"><img src="/images/message.png" alt="Team Edit"> <span>Użytkownicy</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png" alt="Notifications"> <span>Coś tam</span></a></li>
+      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
+      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
+      <li><a (click)="verifyPP()"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
+      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Your comments</span></a></li>
+      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
     </ul>
   </div>
   <div class="navbar-right">
@@ -23,37 +21,33 @@
 <div class="container">
   <div class="main">
     <div class="profile-container">
-      <h1>Profil użytkownika</h1>
+      <h1>User profile</h1>
       
       <div class="profile-info">
         <div class="profile-avatar">
           <img src="/images/logo.png" alt="Profile Picture" class="profile-img">
         </div>
         <div class="profile-details">
-          <h2>Jan Kowalski</h2>
-          <p>Email: jan.kowalskimain.com</p>
-          <p>Bio: Krótkie bio użytkownika. Napisz coś o sobie tutaj...</p>
+          <ul>
+            <li><h2>{{userData?.name}}</h2></li>
+            <li>{{userData?.username}}</li>
+            <li>{{userData?.email}}</li>
+            <li>{{userData?.rank}}</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="team-details">
+        <ul>
+            <li><h3>{{teamData?.name}}</h3></li>
+            <li *ngFor="let user of teamData?.users">{{user.name}}</li>
+        </ul>
       </div>
       
       <div class="profile-actions">
-        <a href="/edit-profile" class="btn">Edytuj profil</a>
+        <a [routerLink]="['/user-edit']" class="btn">Edit Profile</a>
+        <a (click)="confirmDel()" class="btn">Delete Profile</a>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <ul>
-    <li><h2>{{userData?.name}}</h2></li>
-    <li>{{userData?.username}}</li>
-    <li>{{userData?.email}}</li>
-    <li>{{userData?.rank}}</li>
-</ul>
-
-<ul>
-    <li><h3>{{teamData?.name}}</h3></li>
-    <li *ngFor="let user of teamData?.users">{{user.name}}</li>
-</ul>
-
-<button [routerLink]="['/user-edit']">edit</button>
-<button [routerLink]="['']">main page</button> -->

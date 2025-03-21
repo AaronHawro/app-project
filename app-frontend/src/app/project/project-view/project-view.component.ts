@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../services/task.service';
+import { VerificaitonService } from '../../services/verificaiton.service';
 
 @Component({
   selector: 'app-project-view',
@@ -16,7 +17,8 @@ export class ProjectViewComponent {
   constructor(
     private projectService: ProjectService,
     private taskService: TaskService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private verService: VerificaitonService
   ) {}
 
 
@@ -36,5 +38,9 @@ export class ProjectViewComponent {
         })
       }
     })
+  }
+
+  verifyPP() {
+    this.verService.verifyManager('/project-add');
   }
 }

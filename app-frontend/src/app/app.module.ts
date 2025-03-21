@@ -22,6 +22,7 @@ import { TeamEditComponent } from './team/team-edit/team-edit.component';
 import { TeamViewComponent } from './team/team-view/team-view.component';
 import { UserViewComponent } from './user/user-view/user-view.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TeamListComponent } from './team/team-list/team-list.component';
     ProjectViewComponent,
     ProjectEditComponent,
     ProjectAddComponent,
-    TeamListComponent
+    TeamListComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,

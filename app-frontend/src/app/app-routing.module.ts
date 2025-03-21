@@ -16,6 +16,7 @@ import { ProjectEditComponent } from './project/project-edit/project-edit.compon
 import { ProjectAddComponent } from './project/project-add/project-add.component';
 import { AuthGuard } from './services/authGuard.service';
 import { TeamListComponent } from './team/team-list/team-list.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: 'task-add/:id', component: TaskAddComponent},
   {path: 'project-view/:id', component: ProjectViewComponent},
   {path: 'project-edit/:id', component: ProjectEditComponent},
-  {path: 'project-add', component: ProjectAddComponent}
+  {path: 'project-add', component: ProjectAddComponent},
+  {path: 'comment-list', component: CommentListComponent}
 ];
 
 @NgModule({

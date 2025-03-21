@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { TeamService } from '../services/team.service';
 import { ProjectService } from '../services/project.service';
-import { Router } from '@angular/router';
+import { VerificaitonService } from '../services/verificaiton.service';
 
 @Component({
   selector: 'app-main-page',
@@ -22,7 +22,7 @@ export class MainPageComponent {
     private teamService: TeamService,
     private projectService: ProjectService,
     private authService: AuthService,
-    private router: Router
+    private verService: VerificaitonService
   ) {}
 
   ngOnInit() {
@@ -59,16 +59,7 @@ export class MainPageComponent {
     })
   }
 
-  verifyUser() {
-    console.log('veridklasluser');
-
-    this.authService.currentUser$.subscribe(currentUser => {
-      console.log(currentUser!.rank)
-      if(currentUser!.rank == 'programmer') {
-        alert("You dont have the right permissions to do that");
-      }else {
-        this.router.navigate(['/project-add']);
-      }
-    })
+  verifyPP() {
+    this.verService.verifyManager('/project-add');
   }
 }

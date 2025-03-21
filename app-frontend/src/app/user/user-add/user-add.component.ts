@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { VerificaitonService } from '../../services/verificaiton.service';
 
 @Component({
   selector: 'app-user-add',
@@ -9,7 +10,8 @@ import { UserService } from '../../services/user.service';
 })
 export class UserAddComponent {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private verService: VerificaitonService
   ) {}
   
   addName: string = ''; addUsername: string = ''; addPassword: string = ''; addEmail: string = ''; addRank: string = '';
@@ -28,5 +30,9 @@ export class UserAddComponent {
     this.userService.getUserByUsername(this.addUsername).subscribe(user => {
       user ? this.result =  'user added successfully' : this.result =  'user could not be added (chceck email validity)';
     })
+  }
+
+  verifyPP() {
+    this.verService.verifyManager('/project-add');
   }
 }

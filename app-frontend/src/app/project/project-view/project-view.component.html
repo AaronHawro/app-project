@@ -4,11 +4,11 @@
   </div>
   <div class="navbar-center">
     <ul>
-      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png" alt="Home"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/project-add']"><img src="/images/network.png" alt="Project Add"> <span>Stwórz projekt</span></a></li>
-      <li><a [routerLink]="['/team-add']"><img src="/images/jobs.png" alt="Team Add"> <span>Przydzielanie zespołów</span></a></li>
-      <li><a [routerLink]="['/team-edit']"><img src="/images/message.png" alt="Team Edit"> <span>Użytkownicy</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png" alt="Notifications"> <span>Coś tam</span></a></li>
+      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
+      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
+      <li><a (click)="verifyPP()"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
+      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Your comments</span></a></li>
+      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
     </ul>
   </div>
   <div class="navbar-right">

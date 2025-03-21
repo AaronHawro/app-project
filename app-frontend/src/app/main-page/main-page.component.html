@@ -7,8 +7,8 @@
     <ul>
       <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
       <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-      <li><a (click)="verifyUser()"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
-      <li><a [routerLink]="['']"><img src="/images/message.png"> <span>Your comments</span></a></li>
+      <li><a (click)="verifyPP()"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
+      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Your comments</span></a></li>
       <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
     </ul>
   </div>
@@ -86,7 +86,7 @@
     <div *ngFor="let project of projectsData" class="profile-description">
       <h2>{{project.name}}</h2>
       <div class="deadline">
-        <h4>deadline: {{project.deadline}}</h4>
+        <h4>deadline: {{project.deadline | date:'yyyy-MM-dd' }}</h4>
       </div>
       <ul>
         <p>tasks:</p>
@@ -107,31 +107,8 @@
       
       <a [routerLink]="['/project-view']" class="see-more-link">See more...</a>
     </div>
-
-<div *ngFor="let project of projectsData" class="profile-description">
-  <h2>{{project.name}}</h2>
-  <h4>deadline: {{project.deadline | date:'yyyy-MM-dd' }}</h4>
-  <ul>
-    <p>tasks:</p>
-    <p *ngFor="let task of project.tasks">
-      - {{task.overview}}: {{task.status}}
-    </p>
-    <br>
-    <p>teams:</p>
-    <p *ngFor="let team of project.teams">
-      - {{team.name}}
-    </p>
-  </ul>
-  <a [routerLink]="[`/project-view/${project.id}`]" class="see-more-link">See more...</a>
-</div>
-
-<!--<div class="profile-description">
-  <h2>sałata wymiata honej bubu</h2>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum neque id itaque unde, obcaecati rem enim fuga explicabo consectetur vero! Iure dolores voluptates odit in magnam consequuntur ratione unde dolorem. Iste dolorum voluptatibus reprehenderit quis veritatis quasi possimus vitae quod magni cupiditate? Soluta voluptatum animi odit fugiat iste amet! Minima aspernatur cumque, quod laudantium quo fugiat rem culpa sit ut! Asperiores amet excepturi maxime aut consequatur nobis temporibus laboriosam aspernatur eos minima dolore illum, sit expedita facere earum dolor quia magnam tempore atque, praesentium veniam saepe molestiae. Numquam consequuntur temporibus, officia voluptates dignissimos quisquam earum aliquid consequatur harum ratione. Deserunt!</p>
-  <a href="#" class="see-more-link">See more...</a>
-</div>-->
-
   </div>
+  
 
   <div class="first-sidebar">
     <div class="sidebar-ad">
