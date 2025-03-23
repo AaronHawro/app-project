@@ -17,6 +17,7 @@ import { ProjectAddComponent } from './project/project-add/project-add.component
 import { AuthGuard } from './services/authGuard.service';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'task-view/:id', component: TaskViewComponent},
   {path: 'task-edit/:id', component: TaskEditComponent},
   {path: 'task-add/:id', component: TaskAddComponent},
+  {path: 'project-list', component: ProjectListComponent},
   {path: 'project-view/:id', component: ProjectViewComponent},
   {path: 'project-edit/:id', component: ProjectEditComponent},
   {path: 'project-add', component: ProjectAddComponent},
