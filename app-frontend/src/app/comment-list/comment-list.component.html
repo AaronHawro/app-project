@@ -6,18 +6,28 @@
       <ul>
         <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
         <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-        <li><a (click)="verifyPP()"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
-        <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Your comments</span></a></li>
+        <li><a (click)="verifyPP()"><img src="/images/jobs.png"> <span>Projects</span></a></li>
+        <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
         <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
       </ul>
     </div>
     <div class="navbar-right">
       <div class="user-structure">
-        <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['user-view']" alt="Profile">
+        <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['/user-view']" alt="Profile">
       </div>
     </div>
 </nav>
 
-<p [routerLink]="['']" *ngFor="let comment of commentData">
-    {{comment.name}}
-</p>
+<div class="container">
+    <div class="main">
+        <h1>All Comments</h1>
+        <div class="team-list" id="teams">
+            <div class="team" *ngFor="let comment of commentData" [routerLink]="[`/task-view/${comment.task.id}`]">
+                <h2>{{comment.user.name}}</h2>
+                <ul>
+                  <li>{{comment.comment}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </div>

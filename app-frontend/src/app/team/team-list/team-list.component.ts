@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TeamService } from '../../services/team.service';
+import { VerificaitonService } from '../../services/verificaiton.service';
 
 @Component({
   selector: 'app-team-list',
@@ -7,5 +9,25 @@ import { Component } from '@angular/core';
   styleUrl: './team-list.component.scss'
 })
 export class TeamListComponent {
-
+    teamData: any;
+    userData: any[] = [];
+  
+    constructor(
+      private teamService: TeamService,
+      private verService: VerificaitonService
+    ) {}
+  
+    ngOnInit() {
+      this.listTeams()
+    }
+  
+    listTeams() {
+      this.teamService.getTeams().subscribe(teams => {
+        this.teamData = teams;
+      })
+    }
+  
+    verifyPP() {
+      this.verService.verifyManager('/project-add');
+    }
 }

@@ -12,7 +12,9 @@ export class CommentService {
   ) {}
   
   async findAll(): Promise<Comment[]> {
-    return this.commentsRepository.find();
+    return this.commentsRepository.find({
+      relations: ['user', 'task']
+    });
   }
 
   async findOneById(id: number): Promise<Comment | null> {

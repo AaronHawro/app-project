@@ -12,7 +12,9 @@ export class TeamService {
   ) {}
   
   async findAll(): Promise<Team[]> {
-    return this.teamsRepository.find();
+    return this.teamsRepository.find({
+      relations: ['users']
+    });
   }
   
   async findOneById(id: number): Promise<Team | null> {
