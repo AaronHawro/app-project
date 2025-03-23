@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './comment-list.component.html',
   styleUrl: './comment-list.component.scss'
 })
+
+
 export class CommentListComponent {
+
 
 }

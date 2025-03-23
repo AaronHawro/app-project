@@ -78,10 +78,13 @@ form .join-btn {
     background-color: #FF0000;
     color: #fff;
     font-size: 1rem;
-    transition: 100ms ease-in-out background-color;
+    //transition: 100ms ease-in-out background-color;
+    //transition: all .5s ease;
+    transition: background-color 0.3s;
 }
 form .join-btn:hover {
-    background-color: #FF0000;
+    background-color: #d10000;
+  
 }
 .separator {
     display: flex;
@@ -168,6 +171,8 @@ footer > * {
 footer > *:hover {
     color: #FF0000;
 }
+// test: 
+
 
 /*@media only screen and (max-width: 600px) {
   body {
