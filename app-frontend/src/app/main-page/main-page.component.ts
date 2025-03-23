@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { TeamService } from '../services/team.service';
 import { ProjectService } from '../services/project.service';
-import { VerificaitonService } from '../services/verificaiton.service';
 
 @Component({
   selector: 'app-main-page',
@@ -22,7 +21,6 @@ export class MainPageComponent {
     private teamService: TeamService,
     private projectService: ProjectService,
     private authService: AuthService,
-    private verService: VerificaitonService
   ) {}
 
   ngOnInit() {
@@ -57,9 +55,5 @@ export class MainPageComponent {
         })
       })
     })
-  }
-
-  verifyPP() {
-    this.verService.verifyManager('/project-add');
   }
 }

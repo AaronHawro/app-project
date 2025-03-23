@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TeamService } from '../../services/team.service';
-import { VerificaitonService } from '../../services/verificaiton.service';
 
 @Component({
   selector: 'app-team-list',
@@ -14,7 +13,6 @@ export class TeamListComponent {
   
     constructor(
       private teamService: TeamService,
-      private verService: VerificaitonService
     ) {}
   
     ngOnInit() {
@@ -25,9 +23,5 @@ export class TeamListComponent {
       this.teamService.getTeams().subscribe(teams => {
         this.teamData = teams;
       })
-    }
-  
-    verifyPP() {
-      this.verService.verifyManager('/project-add');
     }
 }

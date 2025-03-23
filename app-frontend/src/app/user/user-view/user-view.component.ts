@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { VerificaitonService } from '../../services/verificaiton.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class UserViewComponent {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private verService: VerificaitonService
   ) {}
 
   ngOnInit() {
@@ -27,12 +25,7 @@ export class UserViewComponent {
 
   confirmDel() {
     if(confirm("Are you sure you want to delete this profile?")) {
-      console.log(this.userData.id)
-      this.userService.deleteUser(5).subscribe
+      this.userService.deleteUser(this.userData.id).subscribe
     }
-  }
-
-  verifyPP() {
-    this.verService.verifyManager('/project-add');
   }
 }

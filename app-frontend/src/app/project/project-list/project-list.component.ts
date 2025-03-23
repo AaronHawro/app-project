@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -7,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './project-list.component.scss'
 })
 export class ProjectListComponent {
+  projectData: any;
 
+  constructor(
+    private projectService: ProjectService,
+  ) {}
+
+  ngOnInit() {
+    this.listComments()
+  }
+
+  listComments() {
+    this.projectService.getProjects().subscribe(projects => {
+      this.projectData = projects;
+    })
+  }
 }
