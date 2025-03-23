@@ -79,11 +79,12 @@ form .join-btn {
     color: #fff;
     font-size: 1rem;
     //transition: 100ms ease-in-out background-color;
-    transition: all .5s ease;
+    //transition: all .5s ease;
+    transition: background-color 0.3s;
 }
 form .join-btn:hover {
-    background-color: #B20000;
-    box-shadow: 0 0 10px #000;
+    background-color: #d10000;
+  
 }
 .separator {
     display: flex;
