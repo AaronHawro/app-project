@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { TeamService } from '../../services/team.service';
-import { Router } from '@angular/router';
 import { VerificaitonService } from '../../services/verificaiton.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-view',
@@ -15,24 +14,22 @@ export class UserViewComponent {
   teamData: any;
 
   constructor(
+    private userService: UserService,
     private authService: AuthService,
-    private teamService: TeamService,
-    private verService: VerificaitonService,
-    private router: Router
+    private verService: VerificaitonService
   ) {}
 
   ngOnInit() {
     this.authService.currentUser$.subscribe(user => {
       this.userData = user;
     })
-
-    this.teamService.getTeamById(this.userData.team.id).subscribe(team => {
-      this.teamData = team;
-    })
   }
 
   confirmDel() {
-
+    if(confirm("Are you sure you want to delete this profile?")) {
+      console.log(this.userData.id)
+      this.userService.deleteUser(5).subscribe
+    }
   }
 
   verifyPP() {

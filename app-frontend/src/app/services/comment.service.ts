@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { env } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class CommentService {
 
   constructor(private http: HttpClient) {}
 
-  getComments() {
-    return this.http.get(`${this.apiUrl}/comment`);
+  getComments(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/comment`);
   }
 
   getCommentById(id: number) {
