@@ -140,6 +140,32 @@ h1 {
 .team ul li:hover {
   background: #e0e0e0;
 }
+
+.profile-actions {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 18px;
+}
+
+.profile-actions .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+  margin-left: 5px;
+ 
+}
+
+.profile-actions .btn:hover {
+  background-color: #d10000;
+}
 @media only screen and (max-width: 600px) {
   .navbar-center ul li a span {
       display: none;

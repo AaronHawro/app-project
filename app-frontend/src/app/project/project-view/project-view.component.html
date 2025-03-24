@@ -21,19 +21,30 @@
 
 <div class="container">
   <div class="todo-app">
-  <h2>{{projectData?.name}}<img src="/images/jobs.png"></h2>
-  <h3>Deadline: {{projectData?.deadline | date:'yyyy-MM-dd' }}</h3>
-    <button [routerLink]="[`/task-add/${projectData?.id}`]">Add Tasks</button>
-  <ul id="list-cointainer">
-    <li *ngFor="let task of tasksData">
-      <div *ngIf="task.status == 'done'; else elseBlock">
-        <p class="checked">{{task.overview}}</p>
+    <h2>{{projectData?.name}}<img src="/images/jobs.png"></h2>
+    <div class="deadline">
+      <h3>Deadline: {{projectData?.deadline | date:'yyyy-MM-dd' }}</h3>
+    </div>
+    <button [routerLink]="['/task-add', projectData?.id]" class="btn">Add Tasks</button>
+    <ul id="list-cointainer">
+      <div *ngFor="let task of tasksData">
+        <div *ngIf="task.status == 'done'; else elseBlock">
+          <p class="checked">{{task.overview}}</p>
+        </div>
+        <ng-template #elseBlock>
+          {{task.overview}}
+        </ng-template>
       </div>
-      <ng-template #elseBlock>
-        {{task.overview}}
-      </ng-template>
-    </li>
-  </ul>
-  team (po lewej), guziki edit i delete (po prawej)
+    </ul>
+    <div class="import">
+    <p>Teams:</p>
+    <div class="profile-actions">
+      
+      <a class="btn">Edit </a>
+      <a class="btn">Delete </a>
+    </div>
+  </div>
+  </div>
 </div>
-</div>
+<!----------------------------------->
+

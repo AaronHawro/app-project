@@ -202,6 +202,7 @@ position: relative;
 }
 // navbar segment end
 /* Todo App */
+
 .container {
   width: 100%;
   min-height: 100vh;
@@ -260,6 +261,10 @@ button {
   color: #fff;
   font-size: 1rem;
   transition: 100ms ease-in-out background-color;
+margin-bottom: 20px;
+
+
+  
 }
 
 .list ul li {
@@ -308,10 +313,106 @@ text-decoration: line-through;
 .list ul li span:hover {
   background: #edeef0;
 }
-
-
+.profile-actions {
+  margin-top: 50px;
   
+}
+
+.profile-actions .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+  margin-left: 5px;
+ 
+}
+
+.profile-actions .btn:hover {
+  background-color: #d10000;
+}
+
+
   /* Navbar */
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    background: #edeef0;
+    padding: 10px;
+  }
+  
+  .todo-app {
+    width: 100%;
+    max-width: 540px;
+    background-color: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .todo-app h2 {
+    color: #000;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .todo-app img {
+    width: 30px;
+    margin-left: 10px;
+  }
+  
+  .deadline {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 14px;
+    color: #777;
+    font-weight: 500;
+  }
+  
+  .import {
+    display: flex;
+    justify-content: space-between;
+     margin-top: 50px;
+  }
+
+  .import p {
+    margin-top: 50px;
+  }
+  .profile-actions {
+    display: flex;
+ 
+    margin-top: 50px;
+    
+  }
+  
+  .profile-actions .btn {
+  
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 10px;
+  }
+  
+  
+  .profile-actions .btn:hover {
+    background-color: #d10000;
+  }
+
+
+
   @media only screen and (max-width: 600px) {
   
     .navbar-center ul li a span {
