@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectDataSource, InjectRepository } from '@nestjs/typeorm';
 import { Project } from './project.entity';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateProjectDTO } from './dto/project.dto';
 
 @Injectable()
 export class ProjectService {
   constructor(
-    @InjectRepository(Project)
-    private projectsRepository: Repository<Project>,
+    @InjectRepository(Project) private projectsRepository: Repository<Project>,
+    @InjectDataSource() private dataSource: DataSource
   ) {}
 
   async findAll(): Promise<Project[]> {
@@ -41,6 +41,13 @@ export class ProjectService {
   }
 
   async deleteById(id: number): Promise<void> {
+    await this.dataSource.createQueryBuilder()
+    .delete()
+    .from('team_projects_project')
+    .where("projectId = :projectId")
+    .setParameter("projectId", id)
+    .execute();
+
     await this.projectsRepository.delete(id);
   }
 }

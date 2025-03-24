@@ -1,23 +1,4 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <a [routerLink]="['']" class="logo"><img src="/images/logo.png" alt="Logo"></a>
-  </div>
-  <div class="navbar-center">
-    <ul>
-      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-      <li><a [routerLink]="['/project-list']"><img src="/images/jobs.png"> <span>Projects</span></a></li>
-      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
-    </ul>
-  </div>
-  <div class="navbar-right">
-    <div class="user-structure">
-      <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['/user-view']" alt="Profile">
-    </div>
-  </div>
-</nav>
-
+<app-nav-bar></app-nav-bar>
 
 <div class="container">
   <div class="todo-app">
@@ -25,7 +6,7 @@
     <div class="deadline">
       <h3>Deadline: {{projectData?.deadline | date:'yyyy-MM-dd' }}</h3>
     </div>
-    <button [routerLink]="['/task-add', projectData?.id]" class="btn">Add Tasks</button>
+    <button [routerLink]="[`/task-add/${projectData?.id}`]" class="btn">Add Tasks</button>
     <ul id="list-cointainer">
       <div *ngFor="let task of tasksData">
         <div *ngIf="task.status == 'done'; else elseBlock">
@@ -37,14 +18,11 @@
       </div>
     </ul>
     <div class="import">
-    <p>Teams:</p>
-    <div class="profile-actions">
-      
-      <a class="btn">Edit </a>
-      <a class="btn">Delete </a>
+      <p>{{projectData?.teams[0].name}}</p>
+      <div class="profile-actions">
+        <a [routerLink]="[`/project-edit/${projectData?.id}`]" class="btn">Edit</a>
+        <a (click)="confirmDel()" class="btn">Delete</a>
+      </div>
     </div>
   </div>
-  </div>
 </div>
-<!----------------------------------->
-

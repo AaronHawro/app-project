@@ -1,52 +1,29 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <a [routerLink]="['']" class="logo"><img src="/images/logo.png" alt="Logo"></a>
-  </div>
-  <div class="navbar-center">
-    <ul>
-      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png" alt="Home"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/project-add']"><img src="/images/network.png" alt="Project Add"> <span>Stwórz projekt</span></a></li>
-      <li><a [routerLink]="['/team-add']"><img src="/images/jobs.png" alt="Team Add"> <span>Przydzielanie zespołów</span></a></li>
-      <li><a [routerLink]="['/team-edit']"><img src="/images/message.png" alt="Team Edit"> <span>Użytkownicy</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png" alt="Notifications"> <span>Coś tam</span></a></li>
-    </ul>
-  </div>
-  <div class="navbar-right">
-    <div class="user-structure">
-      <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['user-view']" alt="Profile">
-    </div>
-  </div>
-</nav>
+<app-nav-bar></app-nav-bar>
 
 <div class="container">
   <div class="main">
     <div class="form-container">
-      <h1>Dodaj Zespół do Projektu</h1>
+      <h1>Add a Team</h1>
       <form>
         <div class="form-group">
-          <label for="project-select">Wybierz projekt</label>
-          <select id="project-select">
-            <option value="">Wybierz projekt</option>
-            <option value="project1">Projekt 1</option>
-            <option value="project2">Projekt 2</option>
-            <option value="project3">Projekt 3</option>
+          <label for="team-role">Team name</label>
+          <input [(ngModel)]="addName" [ngModelOptions]="{standalone: true}" type="text" id="team-role" placeholder="Type in the name of your team">
+        </div>
+        <div class="form-group">
+          <label for="team-select">Choose Users</label>
+          <select [(ngModel)]="addUser" [ngModelOptions]="{standalone: true}" id="team-select">
+            <option *ngFor="let user of usersData" value='{{user.id}}'>
+              {{user.name}}
+            </option>
           </select>
+          <p>Users in Team: {{addedUsers}}</p>
+          <div class="profile-actions">
+            <a (click)="saveUser()" class="btn">Add User</a>
+          </div>
         </div>
         <div class="form-group">
-          <label for="team-select">Wybierz zespół</label>
-          <select id="team-select">
-            <option value="">Wybierz zespół</option>
-            <option value="team1">Zespół 1</option>
-            <option value="team2">Zespół 2</option>
-            <option value="team3">Zespół 3</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="team-role">Rola zespołu w projekcie</label>
-          <input type="text" id="team-role" placeholder="Wpisz rolę zespołu">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn">Dodaj zespół</button>
+          <button (click)="addTeam()" class="btn">Save Team</button>
+          <p>{{result}}</p>
         </div>
       </form>
     </div>

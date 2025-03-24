@@ -15,10 +15,10 @@ export class ProjectListComponent {
   ) {}
 
   ngOnInit() {
-    this.listComments()
+    this.listProjects()
   }
 
-  listComments() {
+  listProjects() {
     this.projectService.getProjects().subscribe(projects => {
       this.projectData = projects;
     })

@@ -1,55 +1,29 @@
-
-<!-- tu będą widoczne informacje o zespole-->
-<nav class="navbar">
-  <div class="navbar-left">
-    <a [routerLink]="['']" class="logo"><img src="/images/logo.png" alt="Logo"></a>
-  </div>
-  <div class="navbar-center">
-    <ul>
-      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png" alt="Home"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/project-add']"><img src="/images/network.png" alt="Project Add"> <span>Stwórz projekt</span></a></li>
-      <li><a [routerLink]="['/team-add']"><img src="/images/jobs.png" alt="Team Add"> <span>Przydzielanie zespołów</span></a></li>
-      <li><a [routerLink]="['/team-edit']"><img src="/images/message.png" alt="Team Edit"> <span>Użytkownicy</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png" alt="Notifications"> <span>Coś tam</span></a></li>
-    </ul>
-  </div>
-  <div class="navbar-right">
-    <div class="user-structure">
-      <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['user-view']" alt="Profile">
-    </div>
-  </div>
-</nav>
-
-
+<app-nav-bar></app-nav-bar>
 
 <div class="container">
   <div class="main">
     <div class="team-info-container">
-      <h1>Informacje o Zespole</h1>
+      <h1>Team Details</h1>
       <div class="team-details">
-        <label>Nazwa zespołu:</label>
-        <p id="team-name">Zespół 1</p>
+        <label>Team name:</label>
+        <p id="team-name">{{teamData?.name}}</p>
       </div>
       <div class="team-details">
-        <label>Liczba użytkowników:</label>
-        <p id="team-members-count">5</p>
+        <label>Number os Users:</label>
+        <p id="team-members-count">{{teamData?.users.length}}</p>
       </div>
       <div class="team-details">
-        <label>Użytkownicy w zespole:</label>
+        <label>Users:</label>
         <ul id="team-members">
-          <li>Jan Kowalski</li>
-          <li>Anna Nowak</li>
-          <li>Piotr Wiśniewski</li>
-          <li>Maria Lewandowska</li>
-          <li>Adam Zieliński</li>
+          <li *ngFor="let user of usersData">
+            {{user.name}}
+          </li>
         </ul>
       </div>
-      <div class="team-details">
-        <label>Data utworzenia:</label>
-        <p id="team-created">15 marca 2024</p>
+      <div class="profile-actions">
+        <a [routerLink]="[`/team-edit/${teamData?.id}`]" class="btn">Edit</a>
+        <a (click)="confirmDel()" class="btn">Delete</a>
       </div>
     </div>
   </div>
-
-  
 </div>
