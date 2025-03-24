@@ -23,6 +23,7 @@ import { TeamViewComponent } from './team/team-view/team-view.component';
 import { UserViewComponent } from './user/user-view/user-view.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +40,10 @@ import { CommentListComponent } from './comment-list/comment-list.component';
     TaskViewComponent,
     TaskEditComponent,
     TaskAddComponent,
+    ProjectListComponent,
     ProjectViewComponent,
     ProjectEditComponent,
     ProjectAddComponent,
-    TeamListComponent,
     CommentListComponent
   ],
   imports: [

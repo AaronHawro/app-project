@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { VerificaitonService } from '../../services/verificaiton.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../../../../app-backend/src/tables/user/user.entity';
@@ -14,7 +13,6 @@ import { User } from '../../../../../app-backend/src/tables/user/user.entity';
 export class UserEditComponent {
   constructor(
     private userService: UserService,
-    private verService: VerificaitonService,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -64,9 +62,5 @@ export class UserEditComponent {
         }
       })
     })
-  }
-
-  verifyPP() {
-    this.verService.verifyManager('/project-add');
   }
 }

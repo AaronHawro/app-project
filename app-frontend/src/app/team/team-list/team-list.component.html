@@ -1,51 +1,33 @@
-
-
 <nav class="navbar">
-  <div class="navbar-left">
-      <a [routerLink]="['']" class="logo"><img src="/images/logo.png" alt="Logo"></a>
-  </div>
-  <div class="navbar-center">
+    <div class="navbar-left">
+      <a href="main-page.component.html" class="logo"><img src="/images/logo.png" alt="Logo"></a>
+    </div>
+    <div class="navbar-center">
       <ul>
-          <li><a href="#" ><img src="/images/home.png"> <span>Home</span></a></li>
-          <li><a href="#teams" class="active-link"><img src="/images/network.png"> <span>Teams</span></a></li>
-          <li><a href="#"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
-          <li><a href="#"><img src="/images/message.png"> <span>Your Comments</span></a></li>
-          <li><a href="#"><img src="/images/notification.png"> <span>Log in</span></a></li>
+        <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
+        <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
+        <li><a [routerLink]="['/project-list']"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
+        <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
+        <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
       </ul>
-  </div>
-  <div class="navbar-right">
+    </div>
+    <div class="navbar-right">
       <div class="user-structure">
-          <img src="/images/logo.png" class="nav-profile-img" alt="Profile">
+        <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['user-view']" alt="Profile">
       </div>
-  </div>
+    </div>
 </nav>
 
 <div class="container">
   <div class="main">
-      <h1>Lista Zespołów</h1>
+      <h1>All Teams</h1>
       <div class="team-list" id="teams">
-          <div class="team">
-              <h2>Zespół 1</h2>
+          <div class="team" *ngFor="let team of teamData">
+              <h2>{{team.name}}</h2>
               <ul>
-                  <li>Jan Kowalski</li>
-                  <li>Anna Nowak</li>
-                  <li>Piotr Wiśniewski</li>
-              </ul>
-          </div>
-          <div class="team">
-              <h2>Zespół 2</h2>
-              <ul>
-                  <li>Katarzyna Lewandowska</li>
-                  <li>Marek Zieliński</li>
-                  <li>Paweł Kaczmarek</li>
-              </ul>
-          </div>
-          <div class="team">
-              <h2>Zespół 3</h2>
-              <ul>
-                  <li>Magdalena Dąbrowska</li>
-                  <li>Tomasz Wójcik</li>
-                  <li>Barbara Majewska</li>
+                <li *ngFor="let user of team.users">
+                    {{user.name}}
+                </li>
               </ul>
           </div>
       </div>

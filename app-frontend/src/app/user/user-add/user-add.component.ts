@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { VerificaitonService } from '../../services/verificaiton.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +11,6 @@ import { Router } from '@angular/router';
 export class UserAddComponent {
   constructor(
     private userService: UserService,
-    private verService: VerificaitonService,
     private router: Router
   ) {}
   
@@ -50,9 +48,5 @@ export class UserAddComponent {
         this.result = 'This username is already taken';
       }
     })
-  }
-
-  verifyPP() {
-    this.verService.verifyManager('/project-add');
   }
 }

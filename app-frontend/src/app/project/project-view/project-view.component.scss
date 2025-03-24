@@ -94,10 +94,7 @@ ul li::before {
   left: 8px;
 }
 
-.checked {
-color: #555;
-text-decoration: line-through;
-}
+
 
 .in-progress {
   text-decoration: underline;
@@ -290,7 +287,9 @@ button {
   text-decoration: line-through;
 }
 
-.list ul li.checked::before {
+.checked {
+color: #555;
+text-decoration: line-through;
 }
 
 .list ul li span {
