@@ -19,10 +19,10 @@ export class UserAddComponent {
 
   addUser() {
     let userData = { 
-      name:  this.addName,
-      username:  this.addUsername,
-      password:  this.addPassword,
-      email:  this.addEmail,
+      name: this.addName,
+      username: this.addUsername,
+      password: this.addPassword,
+      email: this.addEmail,
       rank: this.addRank
     }
 

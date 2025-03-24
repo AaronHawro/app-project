@@ -21,35 +21,29 @@
 <div class="container">
   <div class="main">
     <div class="form-container">
-      <h1>Edytuj Projekt</h1>
+      <h1>Edit Project</h1>
       <form>
         <div class="form-group">
-          <label for="project-name">Nazwa projektu</label>
-          <input type="text" id="project-name" placeholder="Wpisz nazwę projektu">
-        </div>
-        <div class="form-group">
-          <label for="project-description">Opis projektu</label>
-          <textarea id="project-description" placeholder="Wpisz opis projektu"></textarea>
+          <label for="project-name">Project Name</label>
+          <input [(ngModel)]="editName" [ngModelOptions]="{standalone: true}" type="text" id="project-name" placeholder="Type in Project name">
         </div>
         <div class="form-group">
           <label for="project-deadline">Deadline</label>
-          <input type="date" id="project-deadline">
+          <input [(ngModel)]="editDeadline" [ngModelOptions]="{standalone: true}" type="date" id="project-deadline">
         </div>
         <div class="form-group">
-          <label for="project-teams">Wybierz zespół</label>
-          <select id="project-teams">
-            <option value="">Wybierz zespół</option>
-            <option value="team1">Zespół 1</option>
-            <option value="team2">Zespół 2</option>
-            <option value="team3">Zespół 3</option>
+          <label for="project-teams">Choose a team</label>
+          <select [(ngModel)]="editTeam" [ngModelOptions]="{standalone: true}" id="project-teams">
+            <option *ngFor="let team of teamData" value='{{team.id}}'>
+              {{team.name}}
+            </option>
           </select>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn">Zapisz zmiany</button>
+          <button (click)="editProject()" class="btn">Save Changes</button>
+          <p>{{result}}</p>
         </div>
       </form>
     </div>
   </div>
-
- 
 </div>

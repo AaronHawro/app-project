@@ -37,4 +37,10 @@ export class ProjectViewComponent {
       }
     })
   }
+
+  confirmDel() {
+    if(confirm("Are you sure you want to delete this project?")) {
+      this.projectService.deleteProject(this.projectData.id).subscribe
+    }
+  }
 }
