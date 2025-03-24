@@ -4,16 +4,16 @@
     </div>
     <div class="navbar-center">
       <ul>
-        <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
-        <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-        <li><a [routerLink]="['/project-list']"><img src="/images/jobs.png"> <span>Create a Project</span></a></li>
+        <li><a [routerLink]="['']" ><img src="/images/home.png"> <span>Home</span></a></li>
+        <li><a [routerLink]="['/team-list']" class="active-link"><img src="/images/network.png"> <span>Teams</span></a></li>
+        <li><a [routerLink]="['/project-list']"><img src="/images/jobs.png"> <span>Projects</span></a></li>
         <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
         <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
       </ul>
     </div>
     <div class="navbar-right">
       <div class="user-structure">
-        <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['user-view']" alt="Profile">
+        <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['/user-view']" alt="Profile">
       </div>
     </div>
 </nav>
@@ -30,6 +30,10 @@
                 </li>
               </ul>
           </div>
+      </div>
+      <div class="profile-actions">
+        <a  class="btn">Edit Profile</a>
+        <a  class="btn">Delete Profile</a>
       </div>
   </div>
 </div>
