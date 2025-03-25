@@ -23,6 +23,7 @@
       <p>{{taskData?.user.name}}</p>
     </div>
     <div class="profile-actions">
+      <p>{{result}}</p>
       <button (click)="markAsDone()" class="btn">Finish</button>
       <button [routerLink]="[`/task-edit/${taskData?.id}`]" class="btn">Edit</button>
       <button (click)="confirmDel()" class="btn">Delete</button>

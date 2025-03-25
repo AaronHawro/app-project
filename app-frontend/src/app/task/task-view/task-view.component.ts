@@ -24,6 +24,7 @@ export class TaskViewComponent {
   ) {}
   
   newComment: string;
+  result: string;
 
   ngOnInit() {
     const taskId = this.route.snapshot.params['id'];
@@ -61,19 +62,25 @@ export class TaskViewComponent {
   }
 
   markAsDone() {
-    let taskData = {
-      overview: this.taskData.overview,
-      description: this.taskData.description,
-      status: 'done',
-      placement: this.taskData.placement,
-      user: this.taskData.user,
-      project: this.taskData.project,
-      comments: this.taskData.comments
-    }
-
-    this.taskService.updateTask(this.taskData.id, taskData).subscribe({
-      next: () => {
-        this.router.navigate([`/project-view/${this.taskData.project.id}`]);
+    this.authService.currentUser$.subscribe(user => {
+      if (user?.username == this.taskData.user.username) {
+        let taskData = {
+          overview: this.taskData.overview,
+          description: this.taskData.description,
+          status: 'done',
+          placement: this.taskData.placement,
+          user: this.taskData.user,
+          project: this.taskData.project,
+          comments: this.taskData.comments
+        }
+    
+        this.taskService.updateTask(this.taskData.id, taskData).subscribe({
+          next: () => {
+            this.router.navigate([`/project-view/${this.taskData.project.id}`]);
+          }
+        })
+      }else {
+        this.result = 'This task does not belong to you';
       }
     })
   }
