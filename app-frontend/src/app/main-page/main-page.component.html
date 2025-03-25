@@ -27,14 +27,23 @@
         <h4>deadline: {{project.deadline | date:'yyyy-MM-dd' }}</h4>
       </div>
       <ul>
-        <p>tasks:</p>
-        <p *ngFor="let task of project.tasks">
-          - {{task.overview}}: {{task.status}}
-        </p>
+        <h4>tasks:</h4>
+        <div *ngFor="let task of project.tasks">
+          <div *ngIf="task.status == 'done'; else elseBlock">
+            <p class="checked">
+              {{task.overview}}
+            </p>
+          </div>
+          <ng-template #elseBlock>
+            <p [routerLink]="[`/task-view/${task.id}`]">
+              - {{task.overview}}
+            </p>
+          </ng-template>
+        </div>
         <br>
         <hr>
         <br>
-        <p>teams:</p>
+        <h4>teams:</h4>
         <p *ngFor="let team of project.teams">
           - {{team.name}}
         </p>
