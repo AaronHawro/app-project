@@ -20,6 +20,15 @@
               {{team.name}}
             </option>
           </select>
+          <ul>
+            <li *ngFor="let team of addedTeams">
+              {{team.name}}
+            </li>
+          </ul>
+          <div class="profile-actions">
+            <a (click)="saveTeam()" class="btn">Add Team</a>
+            <a (click)="clearTeams()" class="btn">Clear Teams</a>
+          </div>
         </div>
         <div class="form-group">
           <button (click)="addProject()" class="btn">Save Project</button>

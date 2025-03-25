@@ -3,10 +3,6 @@
 <div class="container">
     <div class="main">
         <h1>All Comments</h1>
-        <div class="profile-actions">
-          <a  class="btn">Edit Profile</a>
-          <a  class="btn">Delete Profile</a>
-        </div>
         <div class="team-list" id="teams">
             <div class="team" *ngFor="let comment of commentData" [routerLink]="[`/task-view/${comment.task.id}`]">
                 <h2>{{comment.user.name}}</h2>

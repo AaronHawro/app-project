@@ -20,19 +20,29 @@ export class ProjectEditComponent {
   ) {}
   
   editName: string; editDeadline: string; editTeam: number
-  result: string;
+  teamIds: number[] = [];
+  addedTeams: any[] = [];result: string;
 
   ngOnInit() {
     const projectId = this.route.snapshot.params['id'];
     this.projectService.getProjectById(projectId).subscribe(project => {
       this.editName = project.name;
       this.editDeadline = new Date(project.deadline).toISOString().substring(0, 10);
-      this.editTeam = project.teams[0].name
     })
     
     this.teamService.getTeams().subscribe(teams =>
       this.teamData = teams
     )
+  }
+
+  saveTeam() {
+    this.teamService.getTeamById(this.editTeam).subscribe(team => {
+      this.addedTeams.push(team);
+      this.teamIds.push(team.id);
+    })
+  }
+  clearTeams() {
+    this.addedTeams = [];
   }
 
   editProject() {

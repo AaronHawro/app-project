@@ -19,7 +19,8 @@ export class ProjectAddComponent {
   ) {}
   
   addName: string; addDeadline: string; addTeam: number;
-  result: string;
+  teamIds: number[] = [];
+  addedTeams: any[] = []; result: string;
 
   ngOnInit() {
     this.teamService.getTeams().subscribe(teams =>
@@ -27,12 +28,22 @@ export class ProjectAddComponent {
     )
   }
 
+  saveTeam() {
+    this.teamService.getTeamById(this.addTeam).subscribe(team => {
+      this.addedTeams.push(team);
+      this.teamIds.push(team.id);
+    })
+  }
+  clearTeams() {
+    this.addedTeams = [];
+  }
+
   addProject() {
     let projectData = { 
       name: this.addName,
       deadline: this.addDeadline,
       taskIds: [],
-      teamIds: [this.addTeam]
+      teamIds: this.teamIds
     }
 
     this.projectService.createProject(projectData).subscribe({

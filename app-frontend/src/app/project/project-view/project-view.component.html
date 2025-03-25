@@ -10,15 +10,19 @@
     <ul id="list-cointainer">
       <div *ngFor="let task of tasksData">
         <div *ngIf="task.status == 'done'; else elseBlock">
-          <p class="checked">{{task.overview}}</p>
+          <li class="checked">{{task.overview}}</li>
         </div>
         <ng-template #elseBlock>
-          {{task.overview}}
+          <li [routerLink]="[`/task-view/${task.id}`]">{{task.overview}}</li>
         </ng-template>
       </div>
     </ul>
     <div class="import">
-      <p>{{projectData?.teams[0].name}}</p>
+      <ul>
+        <li *ngFor="let team of projectData?.teams" [routerLink]="[`/team-view/${team.id}`]">
+          {{team.name}}
+        </li>
+      </ul>
       <div class="profile-actions">
         <a [routerLink]="[`/project-edit/${projectData?.id}`]" class="btn">Edit</a>
         <a (click)="confirmDel()" class="btn">Delete</a>
