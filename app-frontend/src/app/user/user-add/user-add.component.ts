@@ -41,7 +41,7 @@ export class UserAddComponent {
             this.router.navigate([`/login`]);
           },
           error: () => {
-            this.result = 'User could not be added (chceck email validity)';
+            this.result = 'User could not be added';
           }
         })
       }else {

@@ -16,9 +16,14 @@
               {{user.name}}
             </option>
           </select>
-          <p>Users in Team: {{addedUsers}}</p>
+          <ul>
+            <li *ngFor="let user of addedUsers">
+              {{user.name}}
+            </li>
+          </ul>
           <div class="profile-actions">
             <a (click)="saveUser()" class="btn">Add User</a>
+            <a (click)="clearUsers()" class="btn">Clear Users</a>
           </div>
         </div>
         <div class="form-group">

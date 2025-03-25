@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import { UserService } from '../../services/user.service';
+import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,10 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TeamViewComponent {
   teamData: any;
   usersData: any[] = [];
+  projectsData: any[] = [];
 
   constructor(
     private teamService: TeamService,
     private userService: UserService,
+    private projectService: ProjectService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -34,6 +37,11 @@ export class TeamViewComponent {
       for (let i = 0; i < team.users.length; i++) {
         this.userService.getUserById(team.users[i].id).subscribe(user => {
           this.usersData.push(user);
+        })
+      }
+      for (let i = 0; i < team.projects.length; i++) {
+        this.projectService.getProjectById(team.projects[i].id).subscribe(project => {
+          this.projectsData.push(project);
         })
       }
     })

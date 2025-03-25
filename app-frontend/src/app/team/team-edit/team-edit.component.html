@@ -16,9 +16,29 @@
               {{user.name}}
             </option>
           </select>
-          <p>Users in Team: {{addedUsers}}</p>
+          <ul>
+            <li *ngFor="let user of addedUsers">
+              {{user.name}}
+            </li>
+          </ul>
           <div class="profile-actions">
             <a (click)="saveUser()" class="btn">Add User</a>
+            <a (click)="clearUsers()" class="btn">Clear Users</a>
+          </div>
+          <label for="team-select">Choose Projects</label>
+          <select [(ngModel)]="editProject" [ngModelOptions]="{standalone: true}" id="team-select">
+            <option *ngFor="let project of projectsData" value='{{project.id}}'>
+              {{project.name}}
+            </option>
+          </select>
+          <ul>
+            <li *ngFor="let project of addedProjects">
+              {{project.name}}
+            </li>
+          </ul>
+          <div class="profile-actions">
+            <a (click)="saveProject()" class="btn">Add Project</a>
+            <a (click)="clearProjects()" class="btn">Clear Projects</a>
           </div>
         </div>
         <div class="form-group">

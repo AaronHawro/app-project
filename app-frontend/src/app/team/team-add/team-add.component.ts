@@ -20,7 +20,7 @@ export class TeamAddComponent {
   
   addName: string; addUser: number;
   userIds: number[] = [];
-  addedUsers: string; result: string;
+  addedUsers: any[] = []; result: string;
 
   ngOnInit() {
     this.userService.getUsers().subscribe(users => {
@@ -32,12 +32,17 @@ export class TeamAddComponent {
     })
   }
 
+
   saveUser() {
     this.userService.getUserById(this.addUser).subscribe(user => {
-      this.addedUsers += `${user.name}, `;
+      this.addedUsers.push(user);
       this.userIds.push(user.id);
     })
   }
+  clearUsers() {
+    this.addedUsers = [];
+  }
+
 
   addTeam() {
     let teamData = { 

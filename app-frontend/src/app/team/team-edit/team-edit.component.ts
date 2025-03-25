@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TeamEditComponent {
   teamData: any;
   usersData: any[] = [];
+  projectsData: any[] = [];
   
   constructor(
     private teamService: TeamService,
@@ -24,7 +25,7 @@ export class TeamEditComponent {
   
   editName: string; editUser: number;  editProject: number;
   userIds: number[] = []; projectIds: number[] = [];
-  addedUsers: any[] = []; addedProjects: string; result: string;
+  addedUsers: any[] = []; addedProjects: any[] = []; result: string;
 
   ngOnInit() {
     const teamId = this.route.snapshot.params['id'];
@@ -36,7 +37,7 @@ export class TeamEditComponent {
         this.addedUsers.push(team.users[i]);
       }
       for(let i = 0; i < team.projects.length; i++) {
-        this.addedProjects += `${team.projects[i].name}, `;
+        this.addedProjects.push(team.projects[i])
       }
     })
 
@@ -47,7 +48,15 @@ export class TeamEditComponent {
         })
       }
     })
+    this.projectService.getProjects().subscribe(projects => {
+      for (let i = 0; i < projects.length; i++) {
+        this.projectService.getProjectById(projects[i].id).subscribe(project => {
+          this.projectsData.push(project);
+        })
+      }
+    })
   }
+
 
   saveUser() {
     this.userService.getUserById(this.editUser).subscribe(user => {
@@ -55,13 +64,20 @@ export class TeamEditComponent {
       this.userIds.push(user.id);
     })
   }
+  clearUsers() {
+    this.addedUsers = [];
+  }
 
   saveProject() {
     this.projectService.getProjectById(this.editProject).subscribe(project => {
-      this.addedProjects += `${project.name}, `;
+      this.addedProjects.push(project);
       this.projectIds.push(project.id);
     })
   }
+  clearProjects() {
+    this.addedProjects = [];
+  }
+
 
   update() {
     let teamData = { 
@@ -72,12 +88,12 @@ export class TeamEditComponent {
 
     this.teamService.updateTeam(this.teamData.id, teamData).subscribe({
       next: (team: any) => {
-        this.result = 'Team saved successfully';
+        this.result = 'Team updated successfully';
 
         this.router.navigate([`/team-view/${team.id}`]);
       },
       error: () => {
-        this.result = 'Team could not be saved';
+        this.result = 'Team could not be updated';
       }
     })
   }

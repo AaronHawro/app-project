@@ -9,14 +9,18 @@
         <p id="team-name">{{teamData?.name}}</p>
       </div>
       <div class="team-details">
-        <label>Number os Users:</label>
-        <p id="team-members-count">{{teamData?.users.length}}</p>
-      </div>
-      <div class="team-details">
         <label>Users:</label>
         <ul id="team-members">
           <li *ngFor="let user of usersData">
             {{user.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="team-details">
+        <label>Projects:</label>
+        <ul id="team-members">
+          <li *ngFor="let project of projectsData">
+            {{project.name}}
           </li>
         </ul>
       </div>
