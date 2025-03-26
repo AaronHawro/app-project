@@ -24,20 +24,10 @@ export class MainPageComponent {
   ) {}
 
   ngOnInit() {
-    console.log('MainPage initialized');
-    
     this.findUserProjects();
   }
-
-  ngOnDestroy() {
-    console.log('MainPage destroyed');
-    // Remove any global listeners if added
-  }
-
   
   findUserProjects() {
-    console.log('finduserprojecs');
-
     this.authService.currentUser$.subscribe(currentUser => {
       const currentUserId = currentUser?.id;
 

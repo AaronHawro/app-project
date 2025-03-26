@@ -18,8 +18,6 @@ export class LoginPageComponent {
 
   username: string = ''; password: string = ''; 
   tryLogIn() {
-    console.log('trylogin');
-
     this.userService.getUserByUsername(this.username).subscribe(user => {
       if(user == null) {
         console.log("user not found");

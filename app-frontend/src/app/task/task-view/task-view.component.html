@@ -1,47 +1,32 @@
-
-<!-- tu trzeba będzie dać pojedyńcze zadanie i jego status oraz komentarze i dodawanie komentarzy-->
-<nav class="navbar">
-  <div class="navbar-left">
-    <a href="main-page.component.html" class="logo"><img src="/images/logo.png" alt="Logo"></a>
-  </div>
-  <div class="navbar-center">
-    <ul>
-      <li><a [routerLink]="['']" ><img src="/images/home.png"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-      <li><a [routerLink]="['/project-list']" class="active-link"><img src="/images/jobs.png"> <span>Projects</span></a></li>
-      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
-    </ul>
-  </div>
-  <div class="navbar-right">
-    <div class="user-structure">
-      <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['/user-view']" alt="Profile">
-    </div>
-  </div>
-</nav>
+<app-nav-bar></app-nav-bar>
 
 <div class="container">
   <div class="main">
-      <h1>Task1</h1>
-      <p class="task-description">Desc</p>
-      
-      <div class="comments">
-          <h2>Comments</h2>
-          <ul>
-              <li>comment</li> 
-              
-          </ul>
-      </div>
-  </div>
-  
-  <div class="task-footer">
-      <div class="task-user">
-          <p>The guy</p>
-      </div>
+    <h1>{{taskData?.overview}}</h1>
+    <p class="task-description">{{taskData?.description}}</p>
+    <div class="comments">
+      <h2>Comments</h2>
+      <ul>
+        <li *ngFor="let comment of commentsData">
+          <h3>{{comment.user.name}}:</h3>
+          <p>{{comment.comment}}</p>
+        </li>
+      </ul>
+      <input [(ngModel)]="newComment" [ngModelOptions]="{standalone: true}" type="text" id="task-name" class="task-input" placeholder="Enter your comment">
       <div class="profile-actions">
-        <button class="btn">Finish</button>
-          <button class="btn">Edit</button>
-          <button class="btn">Delete</button>
+        <button (click)="postComment()" class="btn">Post Comment</button>
       </div>
+    </div>
+  </div>
+  <div class="task-footer">
+    <div class="task-user">
+      <p>{{taskData?.user.name}}</p>
+    </div>
+    <div class="profile-actions">
+      <p>{{result}}</p>
+      <button (click)="markAsDone()" class="btn">Finish</button>
+      <button [routerLink]="[`/task-edit/${taskData?.id}`]" class="btn">Edit</button>
+      <button (click)="confirmDel()" class="btn">Delete</button>
+    </div>
   </div>
 </div>

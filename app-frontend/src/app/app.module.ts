@@ -24,6 +24,7 @@ import { UserViewComponent } from './user/user-view/user-view.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ProjectListComponent } from './project/project-list/project-list.compon
     ProjectViewComponent,
     ProjectEditComponent,
     ProjectAddComponent,
-    CommentListComponent
+    CommentListComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

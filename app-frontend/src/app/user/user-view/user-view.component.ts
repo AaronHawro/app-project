@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-view',
@@ -15,6 +16,7 @@ export class UserViewComponent {
   constructor(
     private userService: UserService,
     private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -25,7 +27,8 @@ export class UserViewComponent {
 
   confirmDel() {
     if(confirm("Are you sure you want to delete this profile?")) {
-      this.userService.deleteUser(this.userData.id).subscribe
+      this.userService.deleteUser(this.userData.id).subscribe()
+      this.router.navigate([`/login`]);
     }
   }
 }

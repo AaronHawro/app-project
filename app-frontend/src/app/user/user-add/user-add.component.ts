@@ -19,10 +19,10 @@ export class UserAddComponent {
 
   addUser() {
     let userData = { 
-      name:  this.addName,
-      username:  this.addUsername,
-      password:  this.addPassword,
-      email:  this.addEmail,
+      name: this.addName,
+      username: this.addUsername,
+      password: this.addPassword,
+      email: this.addEmail,
       rank: this.addRank
     }
 
@@ -41,7 +41,7 @@ export class UserAddComponent {
             this.router.navigate([`/login`]);
           },
           error: () => {
-            this.result = 'User could not be added (chceck email validity)';
+            this.result = 'User could not be added';
           }
         })
       }else {

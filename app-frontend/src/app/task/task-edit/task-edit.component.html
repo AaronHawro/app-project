@@ -1,39 +1,15 @@
-
-<!-- tu trzeba będzie dać pojedyńcze zadanie i jego status oraz komentarze i dodawanie komentarzy,
-wszystko z możliwością edytowania-->
-<nav class="navbar">
-  <div class="navbar-left">
-    <a href="main-page.component.html" class="logo"><img src="/images/logo.png" alt="Logo"></a>
-  </div>
-  <div class="navbar-center">
-    <ul>
-      <li><a [routerLink]="['']"><img src="/images/home.png"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-      <li><a [routerLink]="['/project-list']" class="active-link"><img src="/images/jobs.png"> <span>Projects</span></a></li>
-      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
-    </ul>
-  </div>
-  <div class="navbar-right">
-    <div class="user-structure">
-      <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['/user-view']" alt="Profile">
-    </div>
-  </div>
-</nav>
+<app-nav-bar></app-nav-bar>
 
 <div class="container">
   <div class="main">
-      <h1>Edit Task</h1>
-      
-      <label for="task-name">Task Name:</label>
-      <input type="text" id="task-name" class="task-input" placeholder="Enter task name">
-      
-      <label for="task-desc">Description:</label>
-      <textarea id="task-desc" class="task-input" placeholder="Enter task description"></textarea>
-      
-     
-      <div class="profile-actions">
-      <button class="btn">Edit Task</button>
+    <h1>Edit Task</h1>
+    <label for="task-name">Task Name:</label>
+    <input [(ngModel)]="editName" [ngModelOptions]="{standalone: true}" type="text" id="task-name" class="task-input" placeholder="Enter task name">
+    <label for="task-desc">Description:</label>
+    <textarea [(ngModel)]="editDesc" [ngModelOptions]="{standalone: true}" id="task-desc" class="task-input" placeholder="Enter task description"></textarea>
+    <p>{{result}}</p>
+    <div class="profile-actions">
+      <button (click)="updateTask()" class="btn">Edit Task</button>
     </div>
   </div>
 </div>

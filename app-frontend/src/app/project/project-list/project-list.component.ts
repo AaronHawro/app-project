@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
+import { VerificaitonService } from '../../services/verificaiton.service';
 
 @Component({
   selector: 'app-project-list',
@@ -12,15 +13,20 @@ export class ProjectListComponent {
 
   constructor(
     private projectService: ProjectService,
+    private verService: VerificaitonService
   ) {}
 
   ngOnInit() {
-    this.listComments()
+    this.listProjects();
   }
 
-  listComments() {
+  listProjects() {
     this.projectService.getProjects().subscribe(projects => {
       this.projectData = projects;
     })
+  }
+
+  checkPermissions() {
+    this.verService.verifyManager('/project-add');
   }
 }

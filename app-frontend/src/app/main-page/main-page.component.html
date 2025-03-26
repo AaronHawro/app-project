@@ -1,66 +1,4 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <a class="logo"><img src="/images/logo.png"></a>
-
-  </div>
-  <div class="navbar-center">
-    <ul>
-      <li><a [routerLink]="['']" class="active-link"><img src="/images/home.png"> <span>Home</span></a></li>
-      <li><a [routerLink]="['/team-list']"><img src="/images/network.png"> <span>Teams</span></a></li>
-      <li><a [routerLink]="['/project-list']"><img src="/images/jobs.png"> <span>Projects</span></a></li>
-      <li><a [routerLink]="['/comment-list']"><img src="/images/message.png"> <span>Comments</span></a></li>
-      <li><a [routerLink]="['/login']"><img src="/images/notification.png"> <span>Log in</span></a></li>
-    </ul>
-  </div>
-  <div class="navbar-right">
-   <div class="user-structure">
-   
-    <img src="/images/logo.png" class="nav-profile-img" [routerLink]="['/user-view']">
-   
-   </div>
-  </div>
-
-<!----------- ------ profile menu --onclick="toggleMenu()"--------  id="profileMenu"--->
-
-<div class="profile-menu-wrap">
-  <div class="profile-menu">
-    <div class="user-info">
-      <img src="/images/logo.png">
-      <div>
-        <h3>Lorem, ipsum dolor.</h3>
-        <a href="#">See your profile</a>
-      </div>
-    </div>
-    <hr>
-    <a href="#" class="profile-menu-link">
-      <img src="">
-      <p>Give Feedback</p>
-      <span>></span>
-    </a>
-    <a href="#" class="profile-menu-link">
-      <img src="">
-      <p>Settings & Privacy</p>
-      <span>></span>
-    </a>
-    <a href="#" class="profile-menu-link">
-      <img src="">
-      <p>Help & Support</p>
-      <span>></span>
-    </a>
-    <a href="#" class="profile-menu-link">
-      <img src="">
-      <p>Display & Accessibility</p>
-      <span>></span>
-    </a>
-    <a href="#" class="profile-menu-link">
-      <img src="">
-      <p>Logout</p>
-      <span>></span>
-    </a>
-  </div>
-</div>
-
-</nav>
+<app-nav-bar></app-nav-bar>
 
 <!-- ---------------------- navbar close --------------------------->
 
@@ -89,14 +27,23 @@
         <h4>deadline: {{project.deadline | date:'yyyy-MM-dd' }}</h4>
       </div>
       <ul>
-        <p>tasks:</p>
-        <p *ngFor="let task of project.tasks">
-          - {{task.overview}}: {{task.status}}
-        </p>
+        <h4>tasks:</h4>
+        <div *ngFor="let task of project.tasks">
+          <div *ngIf="task.status == 'done'; else elseBlock">
+            <p class="checked">
+              {{task.overview}}
+            </p>
+          </div>
+          <ng-template #elseBlock>
+            <p [routerLink]="[`/task-view/${task.id}`]">
+              - {{task.overview}}
+            </p>
+          </ng-template>
+        </div>
         <br>
         <hr>
         <br>
-        <p>teams:</p>
+        <h4>teams:</h4>
         <p *ngFor="let team of project.teams">
           - {{team.name}}
         </p>
