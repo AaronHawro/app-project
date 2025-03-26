@@ -171,39 +171,7 @@ footer > * {
 footer > *:hover {
     color: #FF0000;
 }
-// test: 
 
-
-/*@media only screen and (max-width: 600px) {
-  body {
-    padding: 1rem;
-  }
-  section {
-    width: 90%;
-    padding: 1.5rem;
-    margin: 1rem auto;
-}
-
-h2 {
-    font-size: 1.5rem;
-}
-
-form button {
-    font-size: 0.9rem;
-}
-
-footer {
-    flex-direction: column;
-    padding: 0.5rem;
-}
-
-footer a {
-    font-size: 0.7rem;
-}
-
-    
- }
-*/
 @media (max-width: 600px) {
     section {
         padding: 1rem;
