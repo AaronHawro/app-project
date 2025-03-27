@@ -28,6 +28,6 @@ export class TeamListComponent {
   }
 
   checkPermissions() {
-    this.verService.verifyManager('/project-add');
+    this.verService.verifyManager('/team-add');
   }
 }
