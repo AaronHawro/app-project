@@ -9,10 +9,13 @@
       <div class="profile-container-ineer">
         <img src="" class="profile-pic">
         <h1>Your Personal Project Manager</h1>
+
+        <b>Soon to end Projects:</b><br>
+        <p *ngFor="let project of STEProjectsData" [routerLink]="[`/project-view/${project.id}`]">
+          - {{project.name}}
+        </p>
         
-        <b>You can see and edit your teams and projects</b>
-        
-        <p>your team:</p>
+        <b>your team:</b>
         <p [routerLink]="[`/team-view/${teamData?.id}`]">{{teamData?.name}}:</p>
         <p *ngFor="let user of teamData?.users">
           - {{user.name}}
