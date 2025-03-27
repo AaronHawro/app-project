@@ -57,6 +57,17 @@
       
       <a [routerLink]="[`/project-view/${project.id}`]" class="see-more-link">See more...</a>
     </div>
+
+    <div *ngFor="let project of endedProjectsData" class="profile-description">
+      <h2 class="checked">{{project.name}}</h2>
+      <div class="deadline">
+        <h4>deadline: {{project.deadline | date:'yyyy-MM-dd' }}</h4>
+      </div>
+      <h3>Project ended</h3>
+      <br>
+      
+      <a [routerLink]="[`/project-view/${project.id}`]" class="see-more-link">See more...</a>
+    </div>
   </div>
   
 

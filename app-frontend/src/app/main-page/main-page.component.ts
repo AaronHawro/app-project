@@ -16,6 +16,7 @@ export class MainPageComponent {
   teamData: any;
   projectsData: any[] = [];
   STEProjectsData: any[] = [];
+  endedProjectsData: any[] = [];
 
   constructor(
     private userService: UserService,
@@ -40,9 +41,7 @@ export class MainPageComponent {
 
           for (let i = 0; i < team.projects.length; i++) {
             this.projectService.getProjectById(team.projects[i].id).subscribe(project => {
-              this.projectsData.push(project);
-
-              this.chceckIfEndsSoon(project)
+              this.chceckWhenEnds(project);
             })
           }
         })
@@ -50,7 +49,7 @@ export class MainPageComponent {
     })
   }
 
-  chceckIfEndsSoon(project: any) {
+  chceckWhenEnds(project: any) {
     const now = new Date();
     const deadline = new Date(project.deadline);
     const msInDay = 24 * 60 * 60 * 1000;
@@ -59,6 +58,10 @@ export class MainPageComponent {
 
     if (diff > 0 && diff <= msInDay) {
       this.STEProjectsData.push(project);
+    }else if (diff < 0) {
+      this.endedProjectsData.push(project);
+    }else {
+      this.projectsData.push(project);
     }
   }
 }
