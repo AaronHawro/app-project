@@ -72,7 +72,6 @@ a {
   transition: background-color 0.3s;
   margin-left: 10px;
 }
-
 .task-input {
   width: 100%;
   max-width: 250px;
@@ -107,6 +106,30 @@ a {
 .profile-actions .btn:hover {
   background-color: #d10000;
 }
+.important-btn {
+  margin-top: 50px;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  margin-left: 27px;
+}
+
+.important-btn .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.important-btn .btn:hover {
+  background-color: #d10000;
+}
 @media only screen and (max-width: 600px) {
   .navbar-center ul li a span {
       display: none;
@@ -139,5 +162,8 @@ a {
   }
   .comment-content p {
     font-size: 13px;
+  }
+  .profile-actions  {
+   margin: 0;
   }
 } 
